@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://ixqo8lbxbvq7"]
+
+[ext_resource type="Script" path="res://Flashable/Player/flash.gd" id="1_43v0a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r7wrd"]
+bounce = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3yjbp"]
+radius = 0.05
+height = 0.2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7rpr1"]
+radius = 0.05
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_phupj"]
+radius = 20.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8d6c"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1.97336e-06, 0.440721, 0.555393, 0.282353)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gb4gx"]
+radius = 20.0
+height = 40.0
+
+[node name="Flash" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.25, 0)
+collision_layer = 4
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_r7wrd")
+freeze = true
+continuous_cd = true
+script = ExtResource("1_43v0a")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3yjbp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_7rpr1")
+skeleton = NodePath("../..")
+
+[node name="FlashRadius" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlashRadius"]
+shape = SubResource("SphereShape3D_phupj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FlashRadius"]
+material_override = SubResource("StandardMaterial3D_q8d6c")
+mesh = SubResource("SphereMesh_gb4gx")
+
+[node name="TimerDetonate" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 1.5
+one_shot = true
+
+[connection signal="body_entered" from="FlashRadius" to="." method="_on_flash_radius_body_entered"]
+[connection signal="timeout" from="TimerDetonate" to="." method="_on_timer_detonate_timeout"]

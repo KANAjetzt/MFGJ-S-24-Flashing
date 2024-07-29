@@ -29,5 +29,6 @@ func _on_player_throw(flash: Flash, origin: Vector3, force: Vector3) -> void:
 	flash.global_position = origin
 	flash.freeze = false
 	flash.apply_impulse(force, origin)
+	flash.start_detonation_timer()
 	await get_tree().create_timer(0.25).timeout
 	player.take()

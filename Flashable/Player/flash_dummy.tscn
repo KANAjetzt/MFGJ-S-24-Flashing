@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4sdsx7buvfgt"]
 
-[ext_resource type="PackedScene" uid="uid://ixqo8lbxbvq7" path="res://Player/flash.tscn" id="1_6xuge"]
+[ext_resource type="PackedScene" uid="uid://ixqo8lbxbvq7" path="res://Flashable/Player/flash.tscn" id="1_6xuge"]
 
 [node name="RigidBody3D" instance=ExtResource("1_6xuge")]
 

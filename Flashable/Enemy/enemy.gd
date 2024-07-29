@@ -1,5 +1,5 @@
-class_name Flash
-extends RigidBody3D
+class_name Enemy
+extends StaticBody3D
 
 
 # Called when the node enters the scene tree for the first time.
