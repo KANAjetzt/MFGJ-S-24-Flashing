@@ -5,7 +5,7 @@ signal throw(flash: Flash, origin: Vector3, force: Vector3)
 
 @export var flash_scene: PackedScene
 @export var flash_dummy_scene: PackedScene
-@export_range(1.0, 10.0, 1.0) var throw_force_multiplier: float
+@export_range(1.0, 20.0, 1.0) var throw_force_multiplier: float
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5

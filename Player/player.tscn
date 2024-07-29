@@ -17,7 +17,7 @@ height = 1.8
 script = ExtResource("1_bnsm5")
 flash_scene = ExtResource("2_7e25n")
 flash_dummy_scene = ExtResource("3_eg24w")
-throw_force_multiplier = 10.0
+throw_force_multiplier = 18.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960043, 0)
@@ -42,3 +42,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70099, -0.443401, -0.920213
 [node name="FlashDummy" parent="Head/Hand" instance=ExtResource("3_eg24w")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000989974, 0.00222743, 0)
+physics_material_override = null
+continuous_cd = false
