@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://tx8rk8l8fp1y"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_bnsm5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2yo1"]
+metallic = 0.94
+metallic_specular = 0.55
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_j67wb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fsqp"]
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3yjbp"]
+radius = 0.05
+height = 0.2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7rpr1"]
+radius = 0.05
+height = 0.2
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_bnsm5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960043, 0)
+material_override = SubResource("StandardMaterial3D_i2yo1")
+mesh = SubResource("CapsuleMesh_j67wb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960043, 0)
+shape = SubResource("CapsuleShape3D_3fsqp")
+
+[node name="Head" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70092, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="Hand" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.691174, -0.920213)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Head/Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.25, 0)
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Hand/RigidBody3D"]
+shape = SubResource("CapsuleShape3D_3yjbp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Hand/RigidBody3D"]
+mesh = SubResource("CapsuleMesh_7rpr1")
+skeleton = NodePath("../..")
