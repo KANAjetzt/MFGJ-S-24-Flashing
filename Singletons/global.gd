@@ -1,0 +1,12 @@
+extends Node
+
+
+signal world_ready
+
+var is_world_ready := false :
+	set(new_value):
+		is_world_ready = new_value
+		if new_value == true:
+			world_ready.emit()
+var is_mouse_locked := true
+var flash_container: Node

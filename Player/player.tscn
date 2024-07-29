@@ -1,6 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://tx8rk8l8fp1y"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_bnsm5"]
+[ext_resource type="PackedScene" uid="uid://ixqo8lbxbvq7" path="res://Player/flash.tscn" id="2_7e25n"]
+[ext_resource type="PackedScene" uid="uid://b4sdsx7buvfgt" path="res://Player/flash_dummy.tscn" id="3_eg24w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2yo1"]
 metallic = 0.94
@@ -11,16 +13,11 @@ metallic_specular = 0.55
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fsqp"]
 height = 1.8
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3yjbp"]
-radius = 0.05
-height = 0.2
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_7rpr1"]
-radius = 0.05
-height = 0.2
-
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_bnsm5")
+flash_scene = ExtResource("2_7e25n")
+flash_dummy_scene = ExtResource("3_eg24w")
+throw_force_multiplier = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960043, 0)
@@ -35,19 +32,13 @@ shape = SubResource("CapsuleShape3D_3fsqp")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70092, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="Camera" type="Camera3D" parent="Head"]
+unique_name_in_owner = true
 
 [node name="Hand" type="Node3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.691174, -0.920213)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70099, -0.443401, -0.920213)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Head/Hand"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.25, 0)
-freeze = true
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Hand/RigidBody3D"]
-shape = SubResource("CapsuleShape3D_3yjbp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Hand/RigidBody3D"]
-mesh = SubResource("CapsuleMesh_7rpr1")
-skeleton = NodePath("../..")
+[node name="FlashDummy" parent="Head/Hand" instance=ExtResource("3_eg24w")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000989974, 0.00222743, 0)

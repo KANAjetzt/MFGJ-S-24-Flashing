@@ -1,11 +1,20 @@
 extends CharacterBody3D
+class_name Player
 
+signal throw(flash: Flash, origin: Vector3, force: Vector3)
+
+@export var flash_scene: PackedScene
+@export var flash_dummy_scene: PackedScene
+@export_range(1.0, 10.0, 1.0) var throw_force_multiplier: float
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const MOUSE_SENSITIVITY = 0.25
 
 @onready var head: Node3D = %Head
+@onready var hand: Node3D = %Hand
+@onready var camera: Camera3D = %Camera
+@onready var flash_dummy: Flash = %FlashDummy
 
 
 func _input(event: InputEvent) -> void:
@@ -13,6 +22,9 @@ func _input(event: InputEvent) -> void:
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
 		head.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+
+	if event.is_action_pressed("throw"):
+		init_throw()
 
 
 func _physics_process(delta: float) -> void:
@@ -38,5 +50,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func throw() -> void:
-	pass
+func take() -> void:
+	flash_dummy.show()
+
+
+func init_throw() -> void:
+	flash_dummy.hide()
+	throw.emit(flash_scene.instantiate(), hand.global_position, -camera.get_global_transform().basis.z * throw_force_multiplier)

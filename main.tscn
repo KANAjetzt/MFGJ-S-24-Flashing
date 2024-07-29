@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cv86jxw8hqo4y" path="res://Assets/sky/autumn_field_puresky_4k.exr" id="3_n0i3d"]
 [ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="3_wdvys"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4h08"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ub4f2"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_wdvys")
 metallic = 0.58
@@ -29,10 +29,11 @@ tonemap_mode = 2
 script = ExtResource("1_7xypt")
 
 [node name="Player" parent="." instance=ExtResource("1_x5tb4")]
+unique_name_in_owner = true
 
 [node name="Floor" parent="." instance=ExtResource("1_i4e41")]
 size = Vector3(200, 0.05, 200)
-material = SubResource("StandardMaterial3D_s4h08")
+material = SubResource("StandardMaterial3D_ub4f2")
 
 [node name="World" type="Node" parent="."]
 
@@ -43,3 +44,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_cwelm")
+
+[node name="FlashContainer" type="Node" parent="."]
+unique_name_in_owner = true
