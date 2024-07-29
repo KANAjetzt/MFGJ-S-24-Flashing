@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://Addons/proto-csgs/proto_csg_box_3d.tscn" id="1_i4e41"]
 [ext_resource type="PackedScene" uid="uid://tx8rk8l8fp1y" path="res://Flashable/Player/player.tscn" id="1_x5tb4"]
 [ext_resource type="Texture2D" uid="uid://cv86jxw8hqo4y" path="res://Assets/sky/autumn_field_puresky_4k.exr" id="3_n0i3d"]
-[ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://Addons/proto-csgs/textures/dark/texture_13.png" id="4_bhg8y"]
+[ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="4_leatq"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4lud"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lqei"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 metallic = 0.58
 metallic_specular = 0.53
 uv1_offset = Vector3(0.5, 0.5, 0.5)
@@ -25,69 +25,69 @@ background_mode = 2
 sky = SubResource("Sky_va1lq")
 tonemap_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmv51"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2snkm"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0hnd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3g0c"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8g0i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4rap"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fwv2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35oo8"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5l86"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubc3g"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6me2s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nbuo"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bcyr8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0k3s5"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gyf0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6py8g"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iox2k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e45hs"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsmnj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4epey"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fk4nn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_huyto"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_bhg8y")
+albedo_texture = ExtResource("4_leatq")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
@@ -101,7 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.389878, 0)
 [node name="Floor" parent="." instance=ExtResource("1_i4e41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 size = Vector3(200, 1, 200)
-material = SubResource("StandardMaterial3D_g4lud")
+material = SubResource("StandardMaterial3D_3lqei")
 
 [node name="World" type="Node" parent="."]
 
@@ -116,77 +116,79 @@ environment = SubResource("Environment_cwelm")
 [node name="FlashContainer" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Level" type="Node3D" parent="."]
+[node name="Level01" type="Node3D" parent="."]
 
-[node name="ProtoCSGBox3D" parent="Level" instance=ExtResource("1_i4e41")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87053, 1.47202, -7.41886)
+[node name="ProtoCSGBox3D" parent="Level01" instance=ExtResource("1_i4e41")]
+transform = Transform3D(0.999999, 0.00146617, -0.000757791, -0.00146594, 0.999999, 0.000289467, 0.000758223, -0.000288335, 1, -4.87053, 1.47202, -7.41886)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(1, 2.8833, 1)
-material = SubResource("StandardMaterial3D_pmv51")
+material = SubResource("StandardMaterial3D_2snkm")
 
-[node name="ProtoCSGBox3D2" parent="Level" instance=ExtResource("1_i4e41")]
+[node name="ProtoCSGBox3D2" parent="Level01" instance=ExtResource("1_i4e41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83559, 1.52707, -7.41886)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(1, 2.97461, 1)
-material = SubResource("StandardMaterial3D_s0hnd")
+material = SubResource("StandardMaterial3D_l3g0c")
 
-[node name="ProtoCSGBox3D9" parent="Level" instance=ExtResource("1_i4e41")]
+[node name="ProtoCSGBox3D9" parent="Level01" instance=ExtResource("1_i4e41")]
 transform = Transform3D(0.229795, 0, 0.973239, 0, 1, 0, -0.973239, 0, 0.229795, 12.2253, 0.686618, -17.7632)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(3.16211, 1.3125, 1.36621)
-material = SubResource("StandardMaterial3D_s8g0i")
+material = SubResource("StandardMaterial3D_r4rap")
 
-[node name="ProtoCSGBox3D7" parent="Level" instance=ExtResource("1_i4e41")]
+[node name="ProtoCSGBox3D7" parent="Level01" instance=ExtResource("1_i4e41")]
 transform = Transform3D(0.85596, 0, -0.517041, 0, 1, 0, 0.517041, 0, 0.85596, 12.2253, 0.686618, -12.4453)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(3.16211, 1.3125, 1.36621)
-material = SubResource("StandardMaterial3D_0fwv2")
+material = SubResource("StandardMaterial3D_35oo8")
 
-[node name="ProtoCSGBox3D10" parent="Level" instance=ExtResource("1_i4e41")]
+[node name="ProtoCSGBox3D10" parent="Level01" instance=ExtResource("1_i4e41")]
 transform = Transform3D(0.85596, 0, -0.517041, 0, 1, 0, 0.517041, 0, 0.85596, 12.2253, 1.68662, -6.62807)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(3.16211, 1.3125, 1.36621)
-material = SubResource("StandardMaterial3D_b5l86")
+material = SubResource("StandardMaterial3D_ubc3g")
 
-[node name="ProtoCSGBox3D8" parent="Level" instance=ExtResource("1_i4e41")]
+[node name="ProtoCSGBox3D8" parent="Level01" instance=ExtResource("1_i4e41")]
 transform = Transform3D(0.85596, 0, -0.517041, 0, 1, 0, 0.517041, 0, 0.85596, 16.3789, 0.686618, -12.4453)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(3.16211, 1.3125, 1.36621)
-material = SubResource("StandardMaterial3D_6me2s")
+material = SubResource("StandardMaterial3D_1nbuo")
 
-[node name="ProtoCSGBox3D3" parent="Level" instance=ExtResource("1_i4e41")]
+[node name="ProtoCSGBox3D3" parent="Level01" instance=ExtResource("1_i4e41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87053, 1.51816, -14.1087)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(1, 2.97559, 1)
-material = SubResource("StandardMaterial3D_bcyr8")
+material = SubResource("StandardMaterial3D_0k3s5")
 
-[node name="ProtoCSGBox3D4" parent="Level" instance=ExtResource("1_i4e41")]
+[node name="ProtoCSGBox3D4" parent="Level01" instance=ExtResource("1_i4e41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83559, 1.51401, -14.1087)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(1, 2.96729, 1)
-material = SubResource("StandardMaterial3D_8gyf0")
+material = SubResource("StandardMaterial3D_6py8g")
 
-[node name="ProtoCSGBox3D5" parent="Level" instance=ExtResource("1_i4e41")]
+[node name="ProtoCSGBox3D5" parent="Level01" instance=ExtResource("1_i4e41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2415, 3.17521, -10.4544)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(9.58264, 0.300903, 9.12502)
-material = SubResource("StandardMaterial3D_iox2k")
+material = SubResource("StandardMaterial3D_e45hs")
 
-[node name="ProtoCSGBox3D6" parent="Level" instance=ExtResource("1_i4e41")]
+[node name="ProtoCSGBox3D6" parent="Level01" instance=ExtResource("1_i4e41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1459, 2.92451, 0.228516)
 size = Vector3(6.64697, 5.68347, 0.542969)
-material = SubResource("StandardMaterial3D_lsmnj")
+material = SubResource("StandardMaterial3D_4epey")
 
-[node name="ProtoCSGBox3D11" parent="Level" instance=ExtResource("1_i4e41")]
+[node name="ProtoCSGBox3D11" parent="Level01" instance=ExtResource("1_i4e41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7445, 2.92451, 0.228516)
 size = Vector3(6.64697, 5.68347, 0.542969)
-material = SubResource("StandardMaterial3D_fk4nn")
+material = SubResource("StandardMaterial3D_huyto")
+
+[node name="Level02" type="Node3D" parent="."]
