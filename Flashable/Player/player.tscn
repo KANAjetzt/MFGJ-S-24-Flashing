@@ -1,46 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://tx8rk8l8fp1y"]
+[gd_scene load_steps=6 format=3 uid="uid://db78owqyj73hw"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_bnsm5"]
+[ext_resource type="Script" path="res://Flashable/Player/player.gd" id="1_bnsm5"]
+[ext_resource type="PackedScene" uid="uid://bapx4os5br1xe" path="res://Flashable/flashable.tscn" id="1_bwbbs"]
 [ext_resource type="PackedScene" uid="uid://ixqo8lbxbvq7" path="res://Flashable/Player/flash.tscn" id="2_7e25n"]
-[ext_resource type="PackedScene" uid="uid://b4sdsx7buvfgt" path="res://Flashable/Player/flash_dummy.tscn" id="3_eg24w"]
+[ext_resource type="PackedScene" uid="uid://b4sdsx7buvfgt" path="res://Flashable/Player/flash_dummy.tscn" id="2_s3r7w"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2yo1"]
-metallic = 0.94
-metallic_specular = 0.55
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uic8"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_j67wb"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fsqp"]
-height = 1.8
-
-[node name="Player" type="CharacterBody3D"]
-collision_mask = 15
+[node name="Player" instance=ExtResource("1_bwbbs")]
+collision_mask = 31
 script = ExtResource("1_bnsm5")
 flash_scene = ExtResource("2_7e25n")
-flash_dummy_scene = ExtResource("3_eg24w")
-throw_force_multiplier = 18.0
+flash_dummy_scene = ExtResource("2_s3r7w")
+throw_force_multiplier = 20.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960043, 0)
-material_override = SubResource("StandardMaterial3D_i2yo1")
-mesh = SubResource("CapsuleMesh_j67wb")
+[node name="MeshInstance3D" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_1uic8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960043, 0)
-shape = SubResource("CapsuleShape3D_3fsqp")
+[node name="RayCast" parent="." index="2"]
+collide_with_areas = true
 
-[node name="Head" type="Node3D" parent="."]
+[node name="Head" type="Node3D" parent="." index="3"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70092, 0)
 
-[node name="Camera" type="Camera3D" parent="Head"]
+[node name="Camera" type="Camera3D" parent="Head" index="0"]
 unique_name_in_owner = true
 
-[node name="Hand" type="Node3D" parent="Head"]
+[node name="Hand" type="Node3D" parent="Head" index="1"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70099, -0.443401, -0.920213)
 
-[node name="FlashDummy" parent="Head/Hand" instance=ExtResource("3_eg24w")]
+[node name="FlashDummy" parent="Head/Hand" index="0" instance=ExtResource("2_s3r7w")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000989974, 0.00222743, 0)
 collision_layer = 1

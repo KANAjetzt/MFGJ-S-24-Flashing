@@ -6,3 +6,6 @@
 
 [node name="CollisionShape3D" parent="." index="0"]
 disabled = true
+
+[node name="MeshInstance3D" parent="FlashRadius" index="1"]
+visible = false

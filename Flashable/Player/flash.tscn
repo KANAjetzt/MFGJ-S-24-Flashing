@@ -18,6 +18,7 @@ radius = 20.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8d6c"]
 transparency = 1
+cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1.97336e-06, 0.440721, 0.555393, 0.282353)
 
@@ -44,7 +45,7 @@ skeleton = NodePath("../..")
 
 [node name="FlashRadius" type="Area3D" parent="."]
 unique_name_in_owner = true
-collision_layer = 4
+collision_layer = 16
 collision_mask = 3
 monitoring = false
 monitorable = false

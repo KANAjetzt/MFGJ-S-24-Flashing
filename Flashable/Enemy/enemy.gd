@@ -1,5 +1,5 @@
 class_name Enemy
-extends StaticBody3D
+extends Flashable
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bapx4os5br1xe"]
+
+[ext_resource type="Script" path="res://Flashable/flashable.gd" id="1_6vhgy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pknp6"]
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivbfl"]
+albedo_color = Color(0.891646, 0.265527, 1.92523e-07, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o60lx"]
+height = 1.8
+
+[node name="Flashable" type="CharacterBody3D"]
+script = ExtResource("1_6vhgy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_pknp6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+material_override = SubResource("StandardMaterial3D_ivbfl")
+mesh = SubResource("CapsuleMesh_o60lx")
+
+[node name="RayCast" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+target_position = Vector3(5, -3.105, 0)
+collision_mask = 8
+debug_shape_custom_color = Color(1, 0, 0.713726, 1)
+debug_shape_thickness = 1

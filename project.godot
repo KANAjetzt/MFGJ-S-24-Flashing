@@ -63,6 +63,7 @@ throw={
 3d_physics/layer_2="Enemy"
 3d_physics/layer_3="Flash"
 3d_physics/layer_4="Geometry"
+3d_physics/layer_5="flash_area"
 
 [physics]
 

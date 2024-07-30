@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Flashable
 class_name Player
 
 signal throw(flash: Flash, origin: Vector3, force: Vector3)

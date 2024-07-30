@@ -1,24 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2ke3wnpiwfiu"]
+[gd_scene load_steps=3 format=3 uid="uid://2ouem2oi6ehu"]
 
-[ext_resource type="Script" path="res://Flashable/Enemy/enemy.gd" id="1_f6k3y"]
+[ext_resource type="PackedScene" uid="uid://bapx4os5br1xe" path="res://Flashable/flashable.tscn" id="1_fgl0m"]
+[ext_resource type="Script" path="res://Flashable/Enemy/enemy.gd" id="2_xiujf"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_br4et"]
-height = 1.8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt478"]
-albedo_color = Color(0.891646, 0.265527, 1.92523e-07, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_26v3d"]
-height = 1.8
-
-[node name="Enemy" type="StaticBody3D"]
-script = ExtResource("1_f6k3y")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-shape = SubResource("CapsuleShape3D_br4et")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-material_override = SubResource("StandardMaterial3D_bt478")
-mesh = SubResource("CapsuleMesh_26v3d")
+[node name="Enemy" instance=ExtResource("1_fgl0m")]
+collision_layer = 2
+collision_mask = 31
+script = ExtResource("2_xiujf")
