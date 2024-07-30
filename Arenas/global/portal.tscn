@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjb2dteos4g55"]
+
+[ext_resource type="Script" path="res://Arenas/global/portal.gd" id="1_3mgwo"]
+[ext_resource type="Texture2D" uid="uid://btms7lp5tkjhn" path="res://Addons/kenney_prototype_textures/orange/texture_10.png" id="1_7orlv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld6ov"]
+albedo_texture = ExtResource("1_7orlv")
+uv1_offset = Vector3(1, 1, 1)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_jb02e"]
+size = Vector3(1.8, 2.2, 0.1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gppuh"]
+points = PackedVector3Array(-0.9, -1.1, -0.05, -0.9, -1.1, 0.05, -0.9, 1.1, -0.05, 0.9, -1.1, -0.05, 0.9, -1.1, 0.05, -0.9, 1.1, 0.05, 0.9, 1.1, -0.05, 0.9, 1.1, 0.05)
+
+[node name="Portal3" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247116, 1.62, 0)
+collision_layer = 8
+collision_mask = 31
+script = ExtResource("1_3mgwo")
+
+[node name="LabelLevelName" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32353, 0)
+text = "Level 1"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ld6ov")
+mesh = SubResource("BoxMesh_jb02e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_gppuh")
+
+[node name="FlashHitDetector" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape3D" parent="FlashHitDetector"]
+shape = SubResource("ConvexPolygonShape3D_gppuh")
+
+[connection signal="body_entered" from="FlashHitDetector" to="." method="_on_flash_hit_detector_body_entered"]

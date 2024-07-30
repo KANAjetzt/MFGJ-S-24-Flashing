@@ -17,6 +17,10 @@ const MOUSE_SENSITIVITY = 0.25
 @onready var flash_dummy: Flash = %FlashDummy
 
 
+func _ready() -> void:
+	Global.player = self
+
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
@@ -57,3 +61,7 @@ func take() -> void:
 func init_throw() -> void:
 	flash_dummy.hide()
 	throw.emit(flash_scene.instantiate(), hand.global_position, -camera.get_global_transform().basis.z * throw_force_multiplier)
+
+
+func teleport(new_position: Vector3) -> void:
+	global_position = new_position

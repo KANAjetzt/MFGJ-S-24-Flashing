@@ -1,0 +1,14 @@
+class_name Portal
+extends StaticBody3D
+
+
+signal flash_hit_detected(destination_position: Vector3)
+
+@export var destination: LevelData
+
+@onready var flash_hit_detector: Area3D = %FlashHitDetector
+@onready var label_level_name: Label3D = %LabelLevelName
+
+
+func _on_flash_hit_detector_body_entered(body: Node3D) -> void:
+	flash_hit_detected.emit(destination.start_position)

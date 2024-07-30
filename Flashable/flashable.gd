@@ -14,4 +14,4 @@ func check_sight(target_position: Vector3) -> void:
 		print("WALL!")
 	else:
 		print("MY EYES X_X")
-	ray_cast.enabled = false
+	#ray_cast.enabled = false

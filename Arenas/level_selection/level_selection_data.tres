@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://b2sxtsx2im1mt"]
+
+[ext_resource type="Script" path="res://Arenas/global/level_data.gd" id="1_nmwwu"]
+
+[resource]
+script = ExtResource("1_nmwwu")
+level_id = &"level_selection"
+level_name = "Level Selection"

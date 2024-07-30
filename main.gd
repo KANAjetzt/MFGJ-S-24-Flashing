@@ -3,13 +3,15 @@ extends Node3D
 
 @onready var flash_container: Node = %FlashContainer
 @onready var player: Player = %Player
+@onready var start_point_level_selection: Node3D = $LevelSelection/StartPoint
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.is_world_ready = true
 	Global.flash_container = flash_container
-
+	
+	player.teleport(start_point_level_selection.global_position)
 	player.take()
 	player.throw.connect(_on_player_throw)
 
