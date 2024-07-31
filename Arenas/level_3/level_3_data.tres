@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_1kb3n")
-level_id = &"level_3"
+level_id = 3
 level_name = "Level 3"
-start_position = Vector3(0, 0, 0)
+is_locked = false
+is_completed = false

@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6gokglf1bhxs"]
+[gd_scene load_steps=14 format=3 uid="uid://b6gokglf1bhxs"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7xypt"]
 [ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://Addons/proto-csgs/proto_csg_box_3d.tscn" id="1_i4e41"]
 [ext_resource type="PackedScene" uid="uid://db78owqyj73hw" path="res://Flashable/Player/player.tscn" id="1_x5tb4"]
+[ext_resource type="PackedScene" uid="uid://ixqo8lbxbvq7" path="res://Throwable/Flash/flash.tscn" id="2_p2du6"]
 [ext_resource type="Texture2D" uid="uid://cv86jxw8hqo4y" path="res://Assets/sky/autumn_field_puresky_4k.exr" id="3_n0i3d"]
 [ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="4_0m0m3"]
 [ext_resource type="PackedScene" uid="uid://cnhj4xqk1w07l" path="res://Arenas/level_2/level_2.tscn" id="5_s7fvs"]
 [ext_resource type="PackedScene" uid="uid://dgkfibdgbd0un" path="res://Arenas/level_1/level_1.tscn" id="7_qfx6j"]
 [ext_resource type="PackedScene" uid="uid://b4x3lq23suk15" path="res://Arenas/level_selection/level_selection.tscn" id="7_wv2gp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_proqe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycg3a"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("4_0m0m3")
 metallic = 0.58
@@ -25,11 +26,30 @@ sky_material = SubResource("PanoramaSkyMaterial_7apno")
 
 [sub_resource type="Environment" id="Environment_cwelm"]
 background_mode = 2
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_va1lq")
 tonemap_mode = 2
+tonemap_exposure = 0.8
+tonemap_white = 1.5
+glow_enabled = true
+glow_bloom = 0.1
+fog_enabled = true
+fog_light_color = Color(0.394497, 0.571818, 0.713921, 1)
+fog_light_energy = 0.2
+fog_aerial_perspective = 0.8
+fog_sky_affect = 0.5
+fog_height = 0.5
+fog_height_density = 0.1
+fog_depth_curve = 2.0
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_7xypt")
+
+[node name="Flash" parent="." instance=ExtResource("2_p2du6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.06098, 0.517061, 0)
+
+[node name="FlashRadius" parent="Flash" index="2"]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_x5tb4")]
 unique_name_in_owner = true
@@ -38,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.5424, 0, 8.63939)
 [node name="Floor" parent="." instance=ExtResource("1_i4e41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 size = Vector3(200, 1, 200)
-material = SubResource("StandardMaterial3D_proqe")
+material = SubResource("StandardMaterial3D_ycg3a")
 
 [node name="FlashContainer" type="Node" parent="."]
 unique_name_in_owner = true
@@ -55,8 +75,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.046, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-light_color = Color(1, 1, 0.898039, 1)
+light_color = Color(0.97836, 0.991063, 1, 1)
+light_energy = 0.2
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_cwelm")
+
+[editable path="Flash"]

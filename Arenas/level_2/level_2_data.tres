@@ -4,5 +4,7 @@
 
 [resource]
 script = ExtResource("1_1unw1")
-level_id = &"level_2"
+level_id = 2
 level_name = "Level 2"
+is_locked = false
+is_completed = false

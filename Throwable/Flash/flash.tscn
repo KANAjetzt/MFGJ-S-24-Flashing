@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ixqo8lbxbvq7"]
+[gd_scene load_steps=18 format=3 uid="uid://ixqo8lbxbvq7"]
 
 [ext_resource type="Script" path="res://Throwable/Flash/flash.gd" id="1_43v0a"]
 [ext_resource type="AudioStream" uid="uid://b5win83rj6m55" path="res://Throwable/Flash/flash_0.ogg" id="2_xcy2m"]
@@ -27,6 +27,52 @@ albedo_color = Color(1.97336e-06, 0.440721, 0.555393, 0.282353)
 radius = 20.0
 height = 40.0
 
+[sub_resource type="Curve" id="Curve_qkfri"]
+_data = [Vector2(0.64899, 1), 0.0, 0.0, 0, 0, Vector2(0.994949, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eef3f"]
+curve = SubResource("Curve_qkfri")
+
+[sub_resource type="Curve" id="Curve_jgtap"]
+_data = [Vector2(0.489899, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hnece"]
+curve = SubResource("Curve_jgtap")
+
+[sub_resource type="Curve" id="Curve_mom11"]
+_data = [Vector2(0.525253, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_l8vc2"]
+curve = SubResource("Curve_mom11")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5lcwa"]
+spread = 110.143
+initial_velocity_min = 6.42
+initial_velocity_max = 48.61
+scale_curve = SubResource("CurveTexture_l8vc2")
+alpha_curve = SubResource("CurveTexture_eef3f")
+emission_curve = SubResource("CurveTexture_hnece")
+collision_mode = 1
+collision_friction = 0.05
+collision_bounce = 0.5
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr2ka"]
+emission_enabled = true
+emission = Color(0.818207, 0.906667, 0.935075, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_00si4"]
+material = SubResource("StandardMaterial3D_kr2ka")
+radius = 0.05
+height = 0.05
+radial_segments = 4
+rings = 1
+
 [node name="Flash" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.25, 0)
 collision_layer = 4
@@ -40,7 +86,8 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_3yjbp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Shell" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 mesh = SubResource("CapsuleMesh_7rpr1")
 skeleton = NodePath("../..")
 
@@ -55,6 +102,7 @@ monitorable = false
 shape = SubResource("SphereShape3D_phupj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FlashRadius"]
+visible = false
 material_override = SubResource("StandardMaterial3D_q8d6c")
 mesh = SubResource("SphereMesh_gb4gx")
 
@@ -66,6 +114,26 @@ one_shot = true
 [node name="SFX" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_xcy2m")
+
+[node name="ParticlesExplosion" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 384
+lifetime = 2.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.15
+process_material = SubResource("ParticleProcessMaterial_5lcwa")
+draw_pass_1 = SubResource("SphereMesh_00si4")
+
+[node name="LightExplosion" type="OmniLight3D" parent="."]
+unique_name_in_owner = true
+visible = false
+light_color = Color(1, 1, 2, 1)
+light_energy = 100.0
+light_size = 0.5
+shadow_enabled = true
+omni_range = 100.0
 
 [connection signal="body_entered" from="FlashRadius" to="." method="_on_flash_radius_body_entered"]
 [connection signal="timeout" from="TimerDetonate" to="." method="_on_timer_detonate_timeout"]

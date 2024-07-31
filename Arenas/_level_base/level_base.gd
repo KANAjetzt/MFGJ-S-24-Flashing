@@ -6,10 +6,12 @@ extends Node3D
 
 @onready var start_point: Node3D = %StartPoint
 @onready var player_dummy: MeshInstance3D = %PlayerDummy
+@onready var enemies: Node3D = $Enemies
 
 
 func _ready() -> void:
 	level_data.start_position = start_point.global_position
+	level_data.enemy_count = enemies.get_child_count()
 	player_dummy.hide()
 
 

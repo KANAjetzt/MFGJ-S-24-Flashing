@@ -15,4 +15,5 @@ func _ready() -> void:
 
 
 func _on_flash_hit_detector_body_entered(body: Node3D) -> void:
+	Global.current_arena_index = destination.level_id
 	flash_hit_detected.emit(destination.start_position)

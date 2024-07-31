@@ -13,3 +13,4 @@ var is_world_ready := false :
 var is_mouse_locked := true
 var flash_container: Node
 var player: Player
+var current_arena_index := 0
