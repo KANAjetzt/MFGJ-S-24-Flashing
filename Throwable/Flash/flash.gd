@@ -7,6 +7,7 @@ var bodies_in_range: Array[Flashable] = []
 
 @onready var timer_detonate: Timer = %TimerDetonate
 @onready var flash_radius: Area3D = %FlashRadius
+@onready var sfx: AudioStreamPlayer3D = %SFX
 
 
 func start_detonation_timer() -> void:
@@ -18,6 +19,7 @@ func _on_timer_detonate_timeout() -> void:
 	var overlap := flash_radius.get_overlapping_bodies()
 	await get_tree().create_timer(0.1).timeout
 	flash_radius.monitoring = false
+	sfx.play()
 	flashed.emit(self, bodies_in_range)
 	flash_radius.hide()
 

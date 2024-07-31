@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Flashable/Player/player.gd" id="1_bnsm5"]
 [ext_resource type="PackedScene" uid="uid://bapx4os5br1xe" path="res://Flashable/flashable.tscn" id="1_bwbbs"]
-[ext_resource type="PackedScene" uid="uid://ixqo8lbxbvq7" path="res://Flashable/Player/flash.tscn" id="2_7e25n"]
-[ext_resource type="PackedScene" uid="uid://b4sdsx7buvfgt" path="res://Flashable/Player/flash_dummy.tscn" id="2_s3r7w"]
+[ext_resource type="PackedScene" uid="uid://ixqo8lbxbvq7" path="res://Throwable/Flash/flash.tscn" id="2_7e25n"]
+[ext_resource type="PackedScene" uid="uid://b4sdsx7buvfgt" path="res://Throwable/Flash/flash_dummy.tscn" id="2_s3r7w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uic8"]
 
