@@ -1,6 +1,9 @@
 class_name Flashable
 extends CharacterBody3D
 
+signal flashed(first_time)
+
+@export var is_flashed := false
 
 @onready var ray_cast: RayCast3D = %RayCast
 
@@ -14,4 +17,6 @@ func check_sight(target_position: Vector3) -> void:
 		print("WALL!")
 	else:
 		print("MY EYES X_X")
-	#ray_cast.enabled = false
+		flashed.emit(not is_flashed)
+		is_flashed = true
+	ray_cast.enabled = false

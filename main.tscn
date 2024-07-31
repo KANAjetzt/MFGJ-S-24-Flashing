@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dgkfibdgbd0un" path="res://Arenas/level_1/level_1.tscn" id="7_qfx6j"]
 [ext_resource type="PackedScene" uid="uid://b4x3lq23suk15" path="res://Arenas/level_selection/level_selection.tscn" id="7_wv2gp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qs0nf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqdxq"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("4_0m0m3")
 metallic = 0.58
@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.5424, 0, 8.63939)
 [node name="Floor" parent="." instance=ExtResource("1_i4e41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 size = Vector3(200, 1, 200)
-material = SubResource("StandardMaterial3D_qs0nf")
+material = SubResource("StandardMaterial3D_jqdxq")
 
 [node name="FlashContainer" type="Node" parent="."]
 unique_name_in_owner = true
