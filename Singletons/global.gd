@@ -13,4 +13,8 @@ var is_world_ready := false :
 var is_mouse_locked := true
 var flash_container: Node
 var player: Player
-var current_arena_index := 0
+var current_arena: LevelData
+var current_arena_index := 0 :
+	set(new_value):
+		current_arena_index = new_value
+		current_arena = arenas[new_value]

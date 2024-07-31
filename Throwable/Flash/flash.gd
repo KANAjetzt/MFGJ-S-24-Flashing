@@ -10,7 +10,7 @@ var bodies_in_range: Array[Flashable] = []
 @onready var sfx: AudioStreamPlayer3D = %SFX
 @onready var particles_explosion: GPUParticles3D = %ParticlesExplosion
 @onready var light_explosion: OmniLight3D = %LightExplosion
-@onready var shell: MeshInstance3D = %Shell
+@onready var shell: Node3D = %Shell
 
 
 func start_detonation_timer() -> void:

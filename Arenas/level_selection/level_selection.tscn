@@ -56,5 +56,8 @@ destination = ExtResource("4_p18kq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.28068, 1.62, 0)
 destination = ExtResource("6_llywv")
 
+[node name="Enemies" type="Node3D" parent="."]
+unique_name_in_owner = true
+
 [connection signal="flash_hit_detected" from="Portals/Portal" to="." method="_on_portal_3_flash_hit_detected"]
 [connection signal="flash_hit_detected" from="Portals/Portal2" to="." method="_on_portal_3_flash_hit_detected"]
