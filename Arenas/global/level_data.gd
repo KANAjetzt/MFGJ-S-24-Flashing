@@ -13,6 +13,8 @@ signal level_completed
 @export var is_completed := false
 ## True if the level has been completed in the past TODO: Add save system ?!
 @export var has_been_completed := false
+## List of levels that are unlocked by completing this one
+@export var unlocks: Array[LevelData] = []
 
 
 ## Global start position of the level, it is set by the StartPoint Node3D inside each level scene.
@@ -27,6 +29,7 @@ var enemies_flashed_count: int :
 		if enemies_flashed_count >= enemy_count:
 			is_completed = true
 			has_been_completed = true
+			handle_unlocks()
 			level_completed.emit()
 			print("LevelData: Level Completed!")
 		
@@ -36,3 +39,8 @@ var enemies_flashed_count: int :
 
 ## The "high score" of the level
 var enemies_flashed_count_best: int
+
+
+func handle_unlocks() -> void:
+	for unlock in unlocks:
+		unlock.is_locked = false

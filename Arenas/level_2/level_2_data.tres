@@ -6,5 +6,7 @@
 script = ExtResource("1_1unw1")
 level_id = 2
 level_name = "Level 2"
-is_locked = false
+is_locked = true
 is_completed = false
+has_been_completed = false
+unlocks = Array[ExtResource("1_1unw1")]([])

@@ -16,9 +16,11 @@ func _ready() -> void:
 
 
 func _on_flash_hit_detector_body_entered(body: Node3D) -> void:
-	Global.current_arena_index = destination.level_id
-	flash_hit_detected.emit(destination.start_position)
-
+	if not destination.is_locked:
+		Global.current_arena_index = destination.level_id
+		flash_hit_detected.emit(destination.start_position)
+	else:
+		print("Sorry Destination is locked ❁´◡`❁)")
 
 func _on_level_completed() -> void:
 	label_level_name.text = "%s %s" % [label_level_name.text, "COMPLETE!"]
