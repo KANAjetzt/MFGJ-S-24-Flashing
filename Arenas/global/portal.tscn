@@ -38,6 +38,7 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape3D" parent="FlashHitDetector"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_gppuh")
 
 [connection signal="body_entered" from="FlashHitDetector" to="." method="_on_flash_hit_detector_body_entered"]

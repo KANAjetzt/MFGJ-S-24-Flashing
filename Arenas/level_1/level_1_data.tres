@@ -6,3 +6,4 @@
 script = ExtResource("1_q0iq0")
 level_id = &"level_1"
 level_name = "Level 1"
+is_locked = false

@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4x3lq23suk15"]
+[gd_scene load_steps=11 format=3 uid="uid://b4x3lq23suk15"]
 
 [ext_resource type="Script" path="res://Arenas/level_selection/level_selection.gd" id="1_j7p3f"]
 [ext_resource type="Texture2D" uid="uid://cmisawkdaq18b" path="res://Addons/kenney_prototype_textures/dark/texture_07.png" id="1_xdfl2"]
 [ext_resource type="Resource" uid="uid://b2sxtsx2im1mt" path="res://Arenas/level_selection/level_selection_data.tres" id="2_f0u2k"]
 [ext_resource type="PackedScene" uid="uid://cjb2dteos4g55" path="res://Arenas/global/portal.tscn" id="2_x5fr8"]
 [ext_resource type="Resource" uid="uid://dft6uepgtlhof" path="res://Arenas/level_1/level_1_data.tres" id="4_p18kq"]
+[ext_resource type="Resource" uid="uid://d1vcprfux03fg" path="res://Arenas/level_2/level_2_data.tres" id="6_llywv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e0fjf"]
+height = 1.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnb0l"]
 albedo_texture = ExtResource("1_xdfl2")
@@ -23,6 +27,11 @@ level_data = ExtResource("2_f0u2k")
 [node name="StartPoint" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.522, 0, 7.09512)
+
+[node name="PlayerDummy" type="MeshInstance3D" parent="StartPoint"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907474, 0)
+mesh = SubResource("CapsuleMesh_e0fjf")
 
 [node name="Floor" type="StaticBody3D" parent="."]
 collision_layer = 8
@@ -43,4 +52,9 @@ metadata/_edit_group_ = true
 [node name="Portal" parent="Portals" instance=ExtResource("2_x5fr8")]
 destination = ExtResource("4_p18kq")
 
+[node name="Portal2" parent="Portals" instance=ExtResource("2_x5fr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.28068, 1.62, 0)
+destination = ExtResource("6_llywv")
+
 [connection signal="flash_hit_detected" from="Portals/Portal" to="." method="_on_portal_3_flash_hit_detected"]
+[connection signal="flash_hit_detected" from="Portals/Portal2" to="." method="_on_portal_3_flash_hit_detected"]

@@ -1,16 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmm55p3lirpfe"]
+[gd_scene load_steps=5 format=3 uid="uid://dmm55p3lirpfe"]
 
 [ext_resource type="PackedScene" uid="uid://cjb2dteos4g55" path="res://Arenas/global/portal.tscn" id="1_7djkt"]
 [ext_resource type="Script" path="res://Arenas/_level_base/level_base.gd" id="1_rmnmb"]
+[ext_resource type="Resource" uid="uid://b2sxtsx2im1mt" path="res://Arenas/level_selection/level_selection_data.tres" id="3_wmfg8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_eijs3"]
+height = 1.8
 
 [node name="LevelBase" type="Node3D"]
 script = ExtResource("1_rmnmb")
 
 [node name="Portal Exit" parent="." instance=ExtResource("1_7djkt")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.247116, 1.62, 4.93896)
+destination = ExtResource("3_wmfg8")
 
 [node name="StartPoint" type="Node3D" parent="."]
 unique_name_in_owner = true
+metadata/_edit_group_ = true
+
+[node name="PlayerDummy" type="MeshInstance3D" parent="StartPoint"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907474, 0)
+mesh = SubResource("CapsuleMesh_eijs3")
 
 [node name="Structure" type="Node3D" parent="."]
 
