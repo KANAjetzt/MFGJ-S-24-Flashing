@@ -5,7 +5,9 @@ signal throw(flash: Flash, origin: Vector3, force: Vector3)
 
 @export var flash_scene: PackedScene
 @export var flash_dummy_scene: PackedScene
+
 @export_range(1.0, 20.0, 1.0) var throw_force_multiplier: float
+@export_range(1.0, 10.0, 1.0) var light_throw_force_multiplier: float
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -33,7 +35,9 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("throw"):
 		init_throw()
-
+	
+	if event.is_action_pressed("throw_light"):
+		init_light_throw()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -65,6 +69,11 @@ func take() -> void:
 func init_throw() -> void:
 	flash_dummy.hide()
 	throw.emit(flash_scene.instantiate(), camera.global_position, -camera.get_global_transform().basis.z * throw_force_multiplier)
+
+
+func init_light_throw() -> void:
+	flash_dummy.hide()
+	throw.emit(flash_scene.instantiate(), camera.global_position, (-camera.get_global_transform().basis.z + Vector3(0.0, 0.9, 0.0)) * light_throw_force_multiplier)
 
 
 func teleport(new_position: Vector3) -> void:

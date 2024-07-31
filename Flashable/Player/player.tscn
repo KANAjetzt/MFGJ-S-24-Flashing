@@ -22,6 +22,7 @@ script = ExtResource("1_bnsm5")
 flash_scene = ExtResource("2_7e25n")
 flash_dummy_scene = ExtResource("2_s3r7w")
 throw_force_multiplier = 20.0
+light_throw_force_multiplier = 6.0
 
 [node name="MeshInstance3D" parent="." index="1"]
 material_override = SubResource("StandardMaterial3D_1uic8")
