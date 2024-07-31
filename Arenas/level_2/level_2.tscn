@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dmm55p3lirpfe" path="res://Arenas/_level_base/level_base.tscn" id="1_56soc"]
 [ext_resource type="Resource" uid="uid://d1vcprfux03fg" path="res://Arenas/level_2/level_2_data.tres" id="2_6e0mq"]
-[ext_resource type="Texture2D" uid="uid://bi2nfrdqsyyvb" path="res://Addons/kenney_prototype_textures/dark/texture_13.png" id="3_rlshg"]
+[ext_resource type="Texture2D" uid="uid://bi2nfrdqsyyvb" path="res://addons/kenney_prototype_textures/dark/texture_13.png" id="3_rlshg"]
 [ext_resource type="PackedScene" uid="uid://2ouem2oi6ehu" path="res://Flashable/Enemy/enemy.tscn" id="3_ybwdm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3dma"]

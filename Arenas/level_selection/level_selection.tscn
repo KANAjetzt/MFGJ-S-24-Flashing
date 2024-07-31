@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b4x3lq23suk15"]
 
 [ext_resource type="Script" path="res://Arenas/level_selection/level_selection.gd" id="1_j7p3f"]
-[ext_resource type="Texture2D" uid="uid://cmisawkdaq18b" path="res://Addons/kenney_prototype_textures/dark/texture_07.png" id="1_xdfl2"]
+[ext_resource type="Texture2D" uid="uid://cmisawkdaq18b" path="res://addons/kenney_prototype_textures/dark/texture_07.png" id="1_xdfl2"]
 [ext_resource type="Resource" uid="uid://b2sxtsx2im1mt" path="res://Arenas/level_selection/level_selection_data.tres" id="2_f0u2k"]
 [ext_resource type="PackedScene" uid="uid://cjb2dteos4g55" path="res://Arenas/global/portal.tscn" id="2_x5fr8"]
 [ext_resource type="Resource" uid="uid://dft6uepgtlhof" path="res://Arenas/level_1/level_1_data.tres" id="4_p18kq"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvxyg14yyrmc7"
-path="res://.godot/imported/texture_01.png-13ec4af7d838bf30057634ca795d9587.ctex"
+path="res://.godot/imported/texture_01.png-9cdbcfca25e428696665850d37fc987f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Addons/proto-csgs/textures/purple/texture_01.png"
-dest_files=["res://.godot/imported/texture_01.png-13ec4af7d838bf30057634ca795d9587.ctex"]
+source_file="res://addons/proto-csgs/textures/purple/texture_01.png"
+dest_files=["res://.godot/imported/texture_01.png-9cdbcfca25e428696665850d37fc987f.ctex"]
 
 [params]
 

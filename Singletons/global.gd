@@ -4,6 +4,7 @@ extends Node
 signal world_ready
 
 @export var arenas: Array[LevelData]
+@export var settings: SettingsData
 
 var is_world_ready := false :
 	set(new_value):

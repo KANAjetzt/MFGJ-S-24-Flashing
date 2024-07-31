@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjb2dteos4g55"]
 
 [ext_resource type="Script" path="res://Arenas/global/portal.gd" id="1_3mgwo"]
-[ext_resource type="Texture2D" uid="uid://btms7lp5tkjhn" path="res://Addons/kenney_prototype_textures/orange/texture_10.png" id="1_7orlv"]
+[ext_resource type="Texture2D" uid="uid://btms7lp5tkjhn" path="res://addons/kenney_prototype_textures/orange/texture_10.png" id="1_7orlv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld6ov"]
 albedo_texture = ExtResource("1_7orlv")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgkfibdgbd0un"]
 
 [ext_resource type="PackedScene" uid="uid://dmm55p3lirpfe" path="res://Arenas/_level_base/level_base.tscn" id="1_orow0"]
-[ext_resource type="Texture2D" uid="uid://bi2nfrdqsyyvb" path="res://Addons/kenney_prototype_textures/dark/texture_13.png" id="2_ow44b"]
+[ext_resource type="Texture2D" uid="uid://bi2nfrdqsyyvb" path="res://addons/kenney_prototype_textures/dark/texture_13.png" id="2_ow44b"]
 [ext_resource type="Resource" uid="uid://dft6uepgtlhof" path="res://Arenas/level_1/level_1_data.tres" id="2_wfhvt"]
 [ext_resource type="PackedScene" uid="uid://2ouem2oi6ehu" path="res://Flashable/Enemy/enemy.tscn" id="3_lmsgg"]
 

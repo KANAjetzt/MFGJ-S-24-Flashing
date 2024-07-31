@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SettingsData" load_steps=2 format=3 uid="uid://cdssbsowhuab1"]
+
+[ext_resource type="Script" path="res://Data/settings_data.gd" id="1_h761u"]
+
+[resource]
+script = ExtResource("1_h761u")
+crosshair_color = Color(0.0818566, 0.521149, 0.41923, 1)

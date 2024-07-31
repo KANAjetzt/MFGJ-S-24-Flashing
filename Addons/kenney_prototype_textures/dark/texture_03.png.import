@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp51c3vuq2o7y"
-path.s3tc="res://.godot/imported/texture_03.png-892dedd4f394f4cb6eebb865af68a284.s3tc.ctex"
+path.s3tc="res://.godot/imported/texture_03.png-eef45c22e5a84c5df22e7f80e41112c6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Addons/kenney_prototype_textures/dark/texture_03.png"
-dest_files=["res://.godot/imported/texture_03.png-892dedd4f394f4cb6eebb865af68a284.s3tc.ctex"]
+source_file="res://addons/kenney_prototype_textures/dark/texture_03.png"
+dest_files=["res://.godot/imported/texture_03.png-eef45c22e5a84c5df22e7f80e41112c6.s3tc.ctex"]
 
 [params]
 

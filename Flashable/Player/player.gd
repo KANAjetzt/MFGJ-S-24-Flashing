@@ -15,10 +15,14 @@ const MOUSE_SENSITIVITY = 0.25
 @onready var hand: Node3D = %Hand
 @onready var camera: Camera3D = %Camera
 @onready var flash_dummy: Flash = %FlashDummy
+@onready var crosshair: TextureRect = %Crosshair
 
 
 func _ready() -> void:
 	Global.player = self
+	crosshair.modulate = Global.settings.crosshair_color
+	
+	Global.settings.crosshair_color_changed.connect(_on_crosshair_color_changed)
 
 
 func _input(event: InputEvent) -> void:
@@ -60,8 +64,12 @@ func take() -> void:
 
 func init_throw() -> void:
 	flash_dummy.hide()
-	throw.emit(flash_scene.instantiate(), hand.global_position, -camera.get_global_transform().basis.z * throw_force_multiplier)
+	throw.emit(flash_scene.instantiate(), camera.global_position, -camera.get_global_transform().basis.z * throw_force_multiplier)
 
 
 func teleport(new_position: Vector3) -> void:
 	global_position = new_position
+
+
+func _on_crosshair_color_changed(new_color: Color) -> void:
+	crosshair.modulate = new_color
