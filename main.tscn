@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6gokglf1bhxs"]
+[gd_scene load_steps=14 format=3 uid="uid://b6gokglf1bhxs"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7xypt"]
 [ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="1_i4e41"]
@@ -7,9 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="5_hoqgj"]
 [ext_resource type="PackedScene" uid="uid://cnhj4xqk1w07l" path="res://Arenas/level_2/level_2.tscn" id="5_s7fvs"]
 [ext_resource type="PackedScene" uid="uid://dgkfibdgbd0un" path="res://Arenas/level_1/level_1.tscn" id="7_qfx6j"]
+[ext_resource type="PackedScene" uid="uid://cvt1aabx5tqug" path="res://Arenas/level_3/level_3.tscn" id="7_vcj16"]
 [ext_resource type="PackedScene" uid="uid://b4x3lq23suk15" path="res://Arenas/level_selection/level_selection.tscn" id="7_wv2gp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsjnd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1g3e"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("5_hoqgj")
 metallic = 0.58
@@ -53,15 +54,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(200, 1, 200)
-material = SubResource("StandardMaterial3D_wsjnd")
+material = SubResource("StandardMaterial3D_d1g3e")
 
 [node name="FlashContainer" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Level2" parent="." instance=ExtResource("5_s7fvs")]
-
 [node name="Level1" parent="." instance=ExtResource("7_qfx6j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.5873, 0, 0)
+
+[node name="Level2" parent="." instance=ExtResource("5_s7fvs")]
+
+[node name="Level3" parent="." instance=ExtResource("7_vcj16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 57.9189)
 
 [node name="LevelSelection" parent="." instance=ExtResource("7_wv2gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.046, 0, 0)

@@ -76,8 +76,8 @@ func init_light_throw() -> void:
 	throw.emit(flash_scene.instantiate(), camera.global_position, (-camera.get_global_transform().basis.z + Vector3(0.0, 0.9, 0.0)) * light_throw_force_multiplier)
 
 
-func teleport(new_position: Vector3) -> void:
-	global_position = new_position
+func teleport(transfrom: Transform3D) -> void:
+	global_transform = transfrom
 
 
 func _on_crosshair_color_changed(new_color: Color) -> void:

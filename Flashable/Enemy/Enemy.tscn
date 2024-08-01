@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://2ouem2oi6ehu"]
+[gd_scene load_steps=4 format=3 uid="uid://2ouem2oi6ehu"]
 
 [ext_resource type="PackedScene" uid="uid://bapx4os5br1xe" path="res://Flashable/flashable.tscn" id="1_fgl0m"]
 [ext_resource type="Script" path="res://Flashable/Enemy/enemy.gd" id="2_xiujf"]
+[ext_resource type="Material" uid="uid://bwjvggncy0rdb" path="res://Flashable/Enemy/enemy_xray.tres" id="3_nvfbr"]
 
 [node name="Enemy" instance=ExtResource("1_fgl0m")]
 collision_layer = 2
 collision_mask = 31
 script = ExtResource("2_xiujf")
+
+[node name="MeshInstance3D" parent="." index="1"]
+material_override = ExtResource("3_nvfbr")

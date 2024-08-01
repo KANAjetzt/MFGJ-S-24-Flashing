@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://d1vcprfux03fg"]
 
-[ext_resource type="Script" path="res://Arenas/global/level_data.gd" id="1_1unw1"]
+[ext_resource type="Script" path="res://Arenas/_global/level_data.gd" id="1_1unw1"]
 
 [resource]
 script = ExtResource("1_1unw1")
 level_id = 2
 level_name = "Level 2"
-is_locked = true
+is_locked = false
 is_completed = false
 has_been_completed = false
 unlocks = Array[ExtResource("1_1unw1")]([])

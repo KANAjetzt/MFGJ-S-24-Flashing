@@ -1,11 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmm55p3lirpfe"]
+[gd_scene load_steps=8 format=3 uid="uid://dmm55p3lirpfe"]
 
-[ext_resource type="PackedScene" uid="uid://cjb2dteos4g55" path="res://Arenas/global/portal.tscn" id="1_7djkt"]
+[ext_resource type="PackedScene" uid="uid://cjb2dteos4g55" path="res://Arenas/_global/portal/portal.tscn" id="1_7djkt"]
 [ext_resource type="Script" path="res://Arenas/_level_base/level_base.gd" id="1_rmnmb"]
 [ext_resource type="Resource" uid="uid://b2sxtsx2im1mt" path="res://Arenas/level_selection/level_selection_data.tres" id="3_wmfg8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_eijs3"]
 height = 1.8
+
+[sub_resource type="Animation" id="Animation_bnlpj"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Structures")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_8kpjk"]
+resource_name = "fade_in"
+length = 10.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Structures")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -5, 0, 9.93333, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_butuw"]
+_data = {
+"RESET": SubResource("Animation_bnlpj"),
+"fade_in": SubResource("Animation_8kpjk")
+}
 
 [node name="LevelBase" type="Node3D"]
 script = ExtResource("1_rmnmb")
@@ -23,9 +50,17 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907474, 0)
 mesh = SubResource("CapsuleMesh_eijs3")
 
-[node name="Structure" type="Node3D" parent="."]
+[node name="Structures" type="Node3D" parent="."]
+unique_name_in_owner = true
 
 [node name="Enemies" type="Node3D" parent="."]
 unique_name_in_owner = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_butuw")
+}
+autoplay = "fade_in"
 
 [connection signal="flash_hit_detected" from="Portal Exit" to="." method="_on_portal_exit_flash_hit_detected"]

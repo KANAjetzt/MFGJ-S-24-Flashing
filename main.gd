@@ -11,7 +11,7 @@ func _ready() -> void:
 	Global.is_world_ready = true
 	Global.flash_container = flash_container
 	
-	player.teleport(start_point_level_selection.global_position)
+	player.teleport(start_point_level_selection.global_transform)
 	player.take()
 	player.throw.connect(_on_player_throw)
 
@@ -24,7 +24,10 @@ func _input(event: InputEvent) -> void:
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			Global.is_mouse_locked = true
-
+	
+	if event.is_action_pressed("debug_0"):
+		Global.current_arena.ref.fade_in_level()
+	
 
 func _on_player_throw(flash: Flash, origin: Vector3, force: Vector3) -> void:
 	flash_container.add_child(flash)
