@@ -56,13 +56,12 @@ unique_name_in_owner = true
 [node name="Enemies" type="Node3D" parent="."]
 unique_name_in_owner = true
 
+[node name="PlayerArea" type="Node3D" parent="."]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_butuw")
 }
-autoplay = "fade_in"
-
-[node name="PlayerArea" type="Node3D" parent="."]
 
 [connection signal="flash_hit_detected" from="Portal Exit" to="." method="_on_portal_exit_flash_hit_detected"]

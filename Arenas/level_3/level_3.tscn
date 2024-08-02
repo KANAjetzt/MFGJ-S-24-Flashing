@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvt1aabx5tqug"]
+[gd_scene load_steps=6 format=3 uid="uid://cvt1aabx5tqug"]
 
 [ext_resource type="PackedScene" uid="uid://dmm55p3lirpfe" path="res://Arenas/_level_base/level_base.tscn" id="1_4ytts"]
 [ext_resource type="PackedScene" uid="uid://dn2rhl8bn6idp" path="res://Arenas/_global/wall/wall.tscn" id="2_7kdmi"]
 [ext_resource type="Resource" uid="uid://4gxf0wf3n72b" path="res://Arenas/level_3/level_3_data.tres" id="2_yknfp"]
 [ext_resource type="PackedScene" uid="uid://2ouem2oi6ehu" path="res://Flashable/Enemy/enemy.tscn" id="3_h7p72"]
+[ext_resource type="PackedScene" uid="uid://cepu2lxamrwfc" path="res://Arenas/_global/player_area/wall_player_area.tscn" id="5_lxtop"]
 
 [node name="Level3" instance=ExtResource("1_4ytts")]
 level_data = ExtResource("2_yknfp")
@@ -54,3 +55,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65762, 0, -20.0209)
 
 [node name="Enemy4" parent="Enemies" index="3" instance=ExtResource("3_h7p72")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65762, 0, -6.3682)
+
+[node name="WallPlayerArea" parent="PlayerArea" index="0" instance=ExtResource("5_lxtop")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0787, -2.35202)
+wall_width = 20.0
+
+[node name="WallPlayerArea2" parent="PlayerArea" index="1" instance=ExtResource("5_lxtop")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0787, -22.6663)
+wall_width = 20.0
+
+[node name="WallPlayerArea3" parent="PlayerArea" index="2" instance=ExtResource("5_lxtop")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.1705, 10.0787, -12.5062)
+wall_width = 20.0
+
+[node name="WallPlayerArea4" parent="PlayerArea" index="3" instance=ExtResource("5_lxtop")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.1567, 10.0787, -12.5062)
+wall_width = 20.0
