@@ -64,6 +64,9 @@ destination = ExtResource("7_rkwel")
 [node name="Enemies" type="Node3D" parent="."]
 unique_name_in_owner = true
 
+[node name="Structures" type="Node3D" parent="."]
+unique_name_in_owner = true
+
 [connection signal="flash_hit_detected" from="Portals/Portal" to="." method="_on_portal_3_flash_hit_detected"]
 [connection signal="flash_hit_detected" from="Portals/Portal2" to="." method="_on_portal_3_flash_hit_detected"]
 [connection signal="flash_hit_detected" from="Portals/Portal3" to="." method="_on_portal_3_flash_hit_detected"]

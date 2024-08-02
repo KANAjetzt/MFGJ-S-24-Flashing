@@ -79,6 +79,7 @@ debug_0={
 3d_physics/layer_3="Flash"
 3d_physics/layer_4="Geometry"
 3d_physics/layer_5="flash_area"
+3d_physics/layer_6="player_area"
 
 [physics]
 

@@ -63,4 +63,6 @@ libraries = {
 }
 autoplay = "fade_in"
 
+[node name="PlayerArea" type="Node3D" parent="."]
+
 [connection signal="flash_hit_detected" from="Portal Exit" to="." method="_on_portal_exit_flash_hit_detected"]

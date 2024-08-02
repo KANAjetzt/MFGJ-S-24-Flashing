@@ -10,7 +10,7 @@ seed = 6
 noise = SubResource("FastNoiseLite_a2ec4")
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_7wu6y")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/emission_color = Color(0.28743, 0.409714, 0.452475, 1)

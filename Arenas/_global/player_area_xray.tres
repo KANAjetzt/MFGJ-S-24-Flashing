@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cw6qbs4i7vyuk"]
+
+[ext_resource type="Shader" path="res://materials/_shaders/shield_own.gdshader" id="1_63bk2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_63bk2")
+shader_parameter/_shield_color = Color(0.321972, 0.509704, 0.64378, 1)
+shader_parameter/_shield_color_1 = Color(0, 0.804053, 0.800481, 1)
+shader_parameter/_shield_color_brightness = 1.0
+shader_parameter/_shield_intensity = 0.25
+shader_parameter/_shield_size = 0.0
+shader_parameter/shield_displace = Vector3(0.1, 0, 0.01)
+shader_parameter/_flash_global_position = null
+shader_parameter/_effect_max_distance = 3.6
