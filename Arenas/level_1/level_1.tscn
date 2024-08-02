@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgkfibdgbd0un"]
+[gd_scene load_steps=12 format=3 uid="uid://dgkfibdgbd0un"]
 
 [ext_resource type="PackedScene" uid="uid://dmm55p3lirpfe" path="res://Arenas/_level_base/level_base.tscn" id="1_orow0"]
 [ext_resource type="Resource" uid="uid://dft6uepgtlhof" path="res://Arenas/level_1/level_1_data.tres" id="2_wfhvt"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" path="res://Flashable/Enemy/Enemy.tscn" id="4_i5ryv"]
 [ext_resource type="PackedScene" uid="uid://cepu2lxamrwfc" path="res://Arenas/_global/player_area/wall_player_area.tscn" id="5_28w28"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_8xl0a"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="7_dndvx"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="8_o84cf"]
 
 [sub_resource type="Resource" id="Resource_gj23f"]
 script = ExtResource("6_8xl0a")
@@ -18,6 +20,18 @@ script = ExtResource("6_8xl0a")
 duration = 3.0
 transition = 4
 ease = 2
+
+[sub_resource type="Resource" id="Resource_h0nnk"]
+script = ExtResource("8_o84cf")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
 
 [node name="Level1" instance=ExtResource("1_orow0")]
 level_data = ExtResource("2_wfhvt")
@@ -68,3 +82,12 @@ tween_resource = SubResource("Resource_gj23f")
 [node name="CameraEnd" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.32803, 9.49193, -2.791)
 tween_resource = SubResource("Resource_rdcni")
+
+[node name="CameraEnd2" type="Node3D" parent="." index="8"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.32803, 9.49193, -2.791)
+script = ExtResource("7_dndvx")
+tween_resource = SubResource("Resource_rdcni")
+camera_3d_resource = SubResource("Resource_h0nnk")
+
+[connection signal="tween_completed" from="CameraEnd2" to="." method="_on_camera_end_tween_completed"]
