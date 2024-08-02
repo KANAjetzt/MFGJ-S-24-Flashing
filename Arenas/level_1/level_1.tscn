@@ -1,7 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgkfibdgbd0un"]
+[gd_scene load_steps=5 format=3 uid="uid://dgkfibdgbd0un"]
 
 [ext_resource type="PackedScene" uid="uid://dmm55p3lirpfe" path="res://Arenas/_level_base/level_base.tscn" id="1_orow0"]
 [ext_resource type="Resource" uid="uid://dft6uepgtlhof" path="res://Arenas/level_1/level_1_data.tres" id="2_wfhvt"]
+[ext_resource type="PackedScene" uid="uid://dn2rhl8bn6idp" path="res://Arenas/_global/wall/wall.tscn" id="3_67rrc"]
+[ext_resource type="PackedScene" path="res://Flashable/Enemy/Enemy.tscn" id="4_i5ryv"]
 
 [node name="Level1" instance=ExtResource("1_orow0")]
 level_data = ExtResource("2_wfhvt")
+
+[node name="Wall" parent="Structures" index="0" instance=ExtResource("3_67rrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51057, 0, -2.67961)
+wall_width = 10.0
+
+[node name="Wall2" parent="Structures" index="1" instance=ExtResource("3_67rrc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.34187, 0, 2.46444)
+wall_width = 10.0
+
+[node name="Wall6" parent="Structures" index="2" instance=ExtResource("3_67rrc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.34187, 0, 2.46444)
+wall_width = 10.0
+
+[node name="Wall4" parent="Structures" index="3" instance=ExtResource("3_67rrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99905, 0, 7.62733)
+wall_width = 15.0
+
+[node name="Wall5" parent="Structures" index="4" instance=ExtResource("3_67rrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99905, 0, -12.1106)
+wall_width = 15.0
+
+[node name="Wall3" parent="Structures" index="5" instance=ExtResource("3_67rrc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.6624, 0, -2.23167)
+wall_width = 20.0
+
+[node name="Wall7" parent="Structures" index="6" instance=ExtResource("3_67rrc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.33585, 0, -7.37559)
+wall_width = 9.095
+
+[node name="Enemy" parent="Enemies" index="0" instance=ExtResource("4_i5ryv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.16035)
