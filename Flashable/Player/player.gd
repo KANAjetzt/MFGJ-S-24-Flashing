@@ -15,9 +15,9 @@ const MOUSE_SENSITIVITY = 0.25
 
 @onready var head: Node3D = %Head
 @onready var hand: Node3D = %Hand
-@onready var camera: Camera3D = %Camera
 @onready var flash_dummy: Flash = %FlashDummy
 @onready var crosshair: TextureRect = %Crosshair
+@onready var camera: PhantomCamera3D = %Camera
 
 
 func _ready() -> void:
@@ -68,12 +68,12 @@ func take() -> void:
 
 func init_throw() -> void:
 	flash_dummy.hide()
-	throw.emit(flash_scene.instantiate(), camera.global_position, -camera.get_global_transform().basis.z * throw_force_multiplier)
+	throw.emit(flash_scene.instantiate(), Global.camera.global_position, -Global.camera.get_global_transform().basis.z * throw_force_multiplier)
 
 
 func init_light_throw() -> void:
 	flash_dummy.hide()
-	throw.emit(flash_scene.instantiate(), camera.global_position, (-camera.get_global_transform().basis.z + Vector3(0.0, 0.9, 0.0)) * light_throw_force_multiplier)
+	throw.emit(flash_scene.instantiate(), Global.camera.global_position, (-Global.camera.get_global_transform().basis.z + Vector3(0.0, 0.9, 0.0)) * light_throw_force_multiplier)
 
 
 func teleport(transfrom: Transform3D) -> void:
@@ -82,3 +82,7 @@ func teleport(transfrom: Transform3D) -> void:
 
 func _on_crosshair_color_changed(new_color: Color) -> void:
 	crosshair.modulate = new_color
+
+
+func activate_camera() -> void:
+	Global.active_camera = camera

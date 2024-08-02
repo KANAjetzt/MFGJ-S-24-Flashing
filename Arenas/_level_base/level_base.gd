@@ -8,6 +8,9 @@ extends Node3D
 @onready var player_dummy: MeshInstance3D = %PlayerDummy
 @onready var enemies: Node3D = %Enemies
 @onready var structures: Node3D = %Structures
+@onready var camera_start: PhantomCamera3D = %CameraStart
+@onready var camera_end: PhantomCamera3D = %CameraEnd
+
 
 
 func _ready() -> void:
@@ -21,8 +24,8 @@ func _ready() -> void:
 		enemy.flashed.connect(_on_enemy_flashed)
 
 
-func _on_portal_exit_flash_hit_detected(destination_transform: Transform3D) -> void:
-	Global.player.teleport(destination_transform)
+func _on_portal_exit_flash_hit_detected(destination: LevelData) -> void:
+	Global.player.teleport(destination.start_transform)
 
 
 func _on_enemy_flashed(is_first: bool) -> void:
@@ -34,3 +37,15 @@ func fade_in_level() -> void:
 	for structure in structures.get_children():
 		if structure is PropWall:
 			structure.play_fade_in()
+
+
+func activate_camera() -> void:
+	Global.active_camera = camera_start
+
+
+func _on_camera_start_tween_completed() -> void:
+	Global.active_camera = camera_end
+
+
+func _on_camera_end_tween_completed() -> void:
+	Global.player.activate_camera()

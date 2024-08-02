@@ -4,16 +4,27 @@ extends Node3D
 @onready var flash_container: Node = %FlashContainer
 @onready var player: Player = %Player
 @onready var start_point_level_selection: Node3D = $LevelSelection/StartPoint
+@onready var camera: Camera3D = %Camera
+@onready var phantom_camera_3d: PhantomCamera3D = $PhantomCamera3D
+@onready var level_selection: LevelBase = %LevelSelection
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	Global.is_world_ready = true
 	Global.flash_container = flash_container
+	Global.camera = camera
 	
 	player.teleport(start_point_level_selection.global_transform)
 	player.take()
 	player.throw.connect(_on_player_throw)
+	
+	Global.is_world_ready = true
+	
+	if Global.disable_intro:
+		player.activate_camera()
+	else:
+		level_selection.activate_camera()
 
 
 func _input(event: InputEvent) -> void:

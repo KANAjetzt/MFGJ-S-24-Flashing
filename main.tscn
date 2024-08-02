@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6gokglf1bhxs"]
+[gd_scene load_steps=23 format=3 uid="uid://b6gokglf1bhxs"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7xypt"]
 [ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="1_i4e41"]
@@ -9,8 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://dgkfibdgbd0un" path="res://Arenas/level_1/level_1.tscn" id="7_qfx6j"]
 [ext_resource type="PackedScene" uid="uid://cvt1aabx5tqug" path="res://Arenas/level_3/level_3.tscn" id="7_vcj16"]
 [ext_resource type="PackedScene" uid="uid://b4x3lq23suk15" path="res://Arenas/level_selection/level_selection.tscn" id="7_wv2gp"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="10_5thwy"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="11_r2s6o"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_1n8td"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="13_6qmiu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_midpm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_apsva"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("5_hoqgj")
 metallic = 0.58
@@ -42,19 +46,75 @@ fog_height = 0.5
 fog_height_density = 0.1
 fog_depth_curve = 2.0
 
+[sub_resource type="Resource" id="Resource_k2xkw"]
+script = ExtResource("12_1n8td")
+duration = 5.0
+transition = 7
+ease = 0
+
+[sub_resource type="Resource" id="Resource_dtvin"]
+script = ExtResource("13_6qmiu")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Animation" id="Animation_kdod3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hvf4c"]
+resource_name = "blend"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.077151, 0.525661, 0.78951),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rh24o"]
+_data = {
+"RESET": SubResource("Animation_kdod3"),
+"blend": SubResource("Animation_hvf4c")
+}
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_7xypt")
 
 [node name="Player" parent="." instance=ExtResource("1_x5tb4")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.5424, 0, 8.63939)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 236.686, 0.520074, 8.63939)
 
 [node name="Floor" parent="." instance=ExtResource("1_i4e41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 8
 collision_mask = 15
 size = Vector3(200, 1, 200)
-material = SubResource("StandardMaterial3D_midpm")
+material = SubResource("StandardMaterial3D_apsva")
 
 [node name="FlashContainer" type="Node" parent="."]
 unique_name_in_owner = true
@@ -68,6 +128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.5873, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 57.9189)
 
 [node name="LevelSelection" parent="." instance=ExtResource("7_wv2gp")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.046, 0, 0)
 
 [node name="World" type="Node" parent="."]
@@ -80,3 +141,36 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_cwelm")
+
+[node name="Camera" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-0.0403624, 0.187436, -0.981447, 0.0132923, 0.982261, 0.187045, 0.999097, -0.00549614, -0.0421378, -89.9765, 23.5333, 0)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera"]
+script = ExtResource("10_5thwy")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(-0.0403624, 0.187436, -0.981447, 0.0132923, 0.982261, 0.187045, 0.999097, -0.00549614, -0.0421378, -89.9765, 23.5333, 0)
+script = ExtResource("11_r2s6o")
+priority = 1
+tween_resource = SubResource("Resource_k2xkw")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_dtvin")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_rh24o")
+}

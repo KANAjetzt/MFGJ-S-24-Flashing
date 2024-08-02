@@ -1,11 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://db78owqyj73hw"]
+[gd_scene load_steps=13 format=3 uid="uid://db78owqyj73hw"]
 
 [ext_resource type="Script" path="res://Flashable/Player/player.gd" id="1_bnsm5"]
 [ext_resource type="PackedScene" uid="uid://bapx4os5br1xe" path="res://Flashable/flashable.tscn" id="1_bwbbs"]
 [ext_resource type="PackedScene" uid="uid://ixqo8lbxbvq7" path="res://Throwable/Flash/flash.tscn" id="2_7e25n"]
 [ext_resource type="PackedScene" uid="uid://b4sdsx7buvfgt" path="res://Throwable/Flash/flash_dummy.tscn" id="2_s3r7w"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_ywet3"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_s4i46"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="7_v2hax"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uic8"]
+
+[sub_resource type="Resource" id="Resource_k0ndy"]
+script = ExtResource("6_s4i46")
+duration = 1.0
+transition = 7
+ease = 0
+
+[sub_resource type="Resource" id="Resource_wtlv6"]
+script = ExtResource("7_v2hax")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 90.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
 
 [sub_resource type="Gradient" id="Gradient_rumwn"]
 offsets = PackedFloat32Array(0, 0.0558252, 0.0606796)
@@ -34,8 +55,11 @@ collide_with_areas = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70092, 0)
 
-[node name="Camera" type="Camera3D" parent="Head" index="0"]
+[node name="Camera" type="Node3D" parent="Head" index="0"]
 unique_name_in_owner = true
+script = ExtResource("5_ywet3")
+tween_resource = SubResource("Resource_k0ndy")
+camera_3d_resource = SubResource("Resource_wtlv6")
 
 [node name="Hand" type="Node3D" parent="Head" index="1"]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4x3lq23suk15"]
+[gd_scene load_steps=18 format=3 uid="uid://b4x3lq23suk15"]
 
 [ext_resource type="Script" path="res://Arenas/level_selection/level_selection.gd" id="1_j7p3f"]
 [ext_resource type="Texture2D" uid="uid://cmisawkdaq18b" path="res://addons/kenney_prototype_textures/dark/texture_07.png" id="1_xdfl2"]
@@ -7,6 +7,9 @@
 [ext_resource type="Resource" uid="uid://dft6uepgtlhof" path="res://Arenas/level_1/level_1_data.tres" id="4_p18kq"]
 [ext_resource type="Resource" uid="uid://d1vcprfux03fg" path="res://Arenas/level_2/level_2_data.tres" id="6_llywv"]
 [ext_resource type="Resource" uid="uid://4gxf0wf3n72b" path="res://Arenas/level_3/level_3_data.tres" id="7_rkwel"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="8_0x0j6"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_2ossc"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="10_y72tw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e0fjf"]
 height = 1.8
@@ -20,6 +23,30 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5x5i2"]
 points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
+
+[sub_resource type="Resource" id="Resource_xquqb"]
+script = ExtResource("9_2ossc")
+duration = 0.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_3ao6i"]
+script = ExtResource("10_y72tw")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_1dspn"]
+script = ExtResource("9_2ossc")
+duration = 1.0
+transition = 4
+ease = 2
 
 [node name="LevelSelection" type="Node3D"]
 script = ExtResource("1_j7p3f")
@@ -66,6 +93,20 @@ unique_name_in_owner = true
 
 [node name="Structures" type="Node3D" parent="."]
 unique_name_in_owner = true
+
+[node name="CameraStart" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.14, 37.8173)
+script = ExtResource("8_0x0j6")
+tween_resource = SubResource("Resource_xquqb")
+camera_3d_resource = SubResource("Resource_3ao6i")
+
+[node name="CameraEnd" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.922349, 0.386357, 0, -0.386357, 0.922349, 0, 16.0034, 20.1815)
+script = ExtResource("8_0x0j6")
+tween_resource = SubResource("Resource_1dspn")
+camera_3d_resource = SubResource("Resource_3ao6i")
 
 [connection signal="flash_hit_detected" from="Portals/Portal" to="." method="_on_portal_3_flash_hit_detected"]
 [connection signal="flash_hit_detected" from="Portals/Portal2" to="." method="_on_portal_3_flash_hit_detected"]
