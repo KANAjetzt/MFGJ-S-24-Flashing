@@ -24,13 +24,13 @@ size = Vector3(100, 1, 100)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5x5i2"]
 points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
 
-[sub_resource type="Resource" id="Resource_xquqb"]
+[sub_resource type="Resource" id="Resource_c168f"]
 script = ExtResource("9_2ossc")
-duration = 0.0
-transition = 0
+duration = 5.0
+transition = 7
 ease = 2
 
-[sub_resource type="Resource" id="Resource_3ao6i"]
+[sub_resource type="Resource" id="Resource_7gwis"]
 script = ExtResource("10_y72tw")
 cull_mask = 1048575
 h_offset = 0.0
@@ -42,11 +42,11 @@ frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
 
-[sub_resource type="Resource" id="Resource_1dspn"]
+[sub_resource type="Resource" id="Resource_q55tr"]
 script = ExtResource("9_2ossc")
 duration = 1.0
-transition = 4
-ease = 2
+transition = 7
+ease = 1
 
 [node name="LevelSelection" type="Node3D"]
 script = ExtResource("1_j7p3f")
@@ -96,18 +96,20 @@ unique_name_in_owner = true
 
 [node name="CameraStart" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.14, 37.8173)
+transform = Transform3D(1, 0, 0, 0, 0.978097, 0.208151, 0, -0.208151, 0.978097, 2.47113, 18.1477, 28.3882)
 script = ExtResource("8_0x0j6")
-tween_resource = SubResource("Resource_xquqb")
-camera_3d_resource = SubResource("Resource_3ao6i")
+tween_resource = SubResource("Resource_c168f")
+camera_3d_resource = SubResource("Resource_7gwis")
 
 [node name="CameraEnd" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.922349, 0.386357, 0, -0.386357, 0.922349, 0, 16.0034, 20.1815)
+transform = Transform3D(1, 0, 0, 0, 0.988772, 0.149432, 0, -0.149432, 0.988772, 2.47113, 2.79429, 12.3581)
 script = ExtResource("8_0x0j6")
-tween_resource = SubResource("Resource_1dspn")
-camera_3d_resource = SubResource("Resource_3ao6i")
+tween_resource = SubResource("Resource_q55tr")
+camera_3d_resource = SubResource("Resource_7gwis")
 
 [connection signal="flash_hit_detected" from="Portals/Portal" to="." method="_on_portal_3_flash_hit_detected"]
 [connection signal="flash_hit_detected" from="Portals/Portal2" to="." method="_on_portal_3_flash_hit_detected"]
 [connection signal="flash_hit_detected" from="Portals/Portal3" to="." method="_on_portal_3_flash_hit_detected"]
+[connection signal="tween_completed" from="CameraStart" to="." method="_on_camera_start_tween_completed"]
+[connection signal="tween_completed" from="CameraEnd" to="." method="_on_camera_end_tween_completed"]
