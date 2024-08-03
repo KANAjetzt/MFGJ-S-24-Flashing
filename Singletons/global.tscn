@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://du6620k06agnp"]
+[gd_scene load_steps=13 format=3 uid="uid://du6620k06agnp"]
 
 [ext_resource type="Script" path="res://Singletons/global.gd" id="1_hifrn"]
 [ext_resource type="Script" path="res://Arenas/_global/level_data.gd" id="2_d3kab"]
@@ -8,12 +8,21 @@
 [ext_resource type="Resource" uid="uid://4gxf0wf3n72b" path="res://Arenas/level_3/level_3_data.tres" id="6_mkf1e"]
 [ext_resource type="Resource" uid="uid://cdssbsowhuab1" path="res://Data/settings_data.tres" id="7_aftys"]
 
+[sub_resource type="Gradient" id="Gradient_rumwn"]
+offsets = PackedFloat32Array(0, 0.0558252, 0.0606796)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5q0xd"]
+gradient = SubResource("Gradient_rumwn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="Animation" id="Animation_kdod3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/path = NodePath("UI/Blend:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +39,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/path = NodePath("UI/Blend:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,15 +61,26 @@ arenas = Array[ExtResource("2_d3kab")]([ExtResource("3_1bx6c"), ExtResource("4_l
 settings = ExtResource("7_aftys")
 disable_intro = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="Blend" type="ColorRect" parent="UI"]
 modulate = Color(0, 0, 0, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="UI"]
+unique_name_in_owner = true
+modulate = Color(0.721466, 0.0735135, 1, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5q0xd")
+stretch_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

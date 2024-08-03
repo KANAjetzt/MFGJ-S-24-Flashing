@@ -49,9 +49,9 @@ void vertex() {
 	distances_to_flash = vertex_distance_to_flash;
 	vec3 vertex_direction_to_flash = direction(vertex_world_position, _flash_global_position);
 	float vertex_dot_to_flash = min(0.0, dot(NORMAL * -1.0, vertex_direction_to_flash));
-	
+
 	displacement += (smoothstep(shield_displace.x, shield_displace.y, vertex_distance_to_flash_clamped) * shield_displace.z) * vertex_dot_to_flash;
-	
+
 
 	VERTEX += NORMAL * (displacement + _shield_size);
 }
@@ -61,9 +61,9 @@ void fragment() {
 	float fresnel = ComputeFresnel(NORMAL, VIEW, _shield_intensity);
 
 	vec3 color_blend = mix(vec3(_shield_color_1.r * 1.5, _shield_color_1.g * 1.5, _shield_color_1.b * 1.0), _shield_color, clamp(distances_to_flash, 0.0, 1.0));
-	
+
 	float inverse_distance = 1.0 - clamp(distances_to_flash / _effect_max_distance, 0.0, 1.0);
-	
+
 	// set color and alpha
 	ALBEDO = mix(color_blend, color_blend * _shield_color_brightness, inverse_distance);
 	ALPHA *= fresnel * max(0.1, inverse_distance);

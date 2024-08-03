@@ -7,11 +7,12 @@ signal level_completed
 @export var is_active := false :
 	set(new_value):
 		is_active = new_value
-		if ref:
+		if ref and not level_id == 0:
 			if new_value == true:
 				Global.level_container.add_child(ref)
 			else:
-				Global.level_container.remove_child(ref)
+				Global.level_container.remove_child.call_deferred(ref)
+
 ## Index in the Global Arena Array
 @export var level_id: int
 ## Displayed name of the level

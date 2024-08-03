@@ -46,6 +46,16 @@ var previous_camera: PhantomCamera3D = null :
 		previous_camera = new_value
 		previous_camera.set_priority(0)
 
+@onready var crosshair: TextureRect = %Crosshair
+
+
+func _ready() -> void:
+	settings.crosshair_color_changed.connect(_on_crosshair_color_changed)
+
 
 func blend() -> void:
 	%AnimationPlayer.play("blend")
+
+
+func _on_crosshair_color_changed(new_color: Color) -> void:
+	crosshair.modulate = new_color

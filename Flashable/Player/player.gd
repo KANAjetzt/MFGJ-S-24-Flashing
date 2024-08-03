@@ -23,8 +23,6 @@ const MOUSE_SENSITIVITY = 0.25
 func _ready() -> void:
 	Global.player = self
 	crosshair.modulate = Global.settings.crosshair_color
-	
-	Global.settings.crosshair_color_changed.connect(_on_crosshair_color_changed)
 
 
 func _input(event: InputEvent) -> void:
@@ -78,10 +76,6 @@ func init_light_throw() -> void:
 
 func teleport(transfrom: Transform3D) -> void:
 	global_transform = transfrom
-
-
-func _on_crosshair_color_changed(new_color: Color) -> void:
-	crosshair.modulate = new_color
 
 
 func activate_camera() -> void:

@@ -28,12 +28,12 @@ frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
 
-[sub_resource type="Gradient" id="Gradient_rumwn"]
+[sub_resource type="Gradient" id="Gradient_jhhxl"]
 offsets = PackedFloat32Array(0, 0.0558252, 0.0606796)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_aivgo"]
-gradient = SubResource("Gradient_rumwn")
+gradient = SubResource("Gradient_jhhxl")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
