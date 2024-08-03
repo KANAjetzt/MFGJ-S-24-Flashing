@@ -1,10 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6gokglf1bhxs"]
+[gd_scene load_steps=21 format=3 uid="uid://b6gokglf1bhxs"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7xypt"]
-[ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="1_i4e41"]
 [ext_resource type="PackedScene" uid="uid://db78owqyj73hw" path="res://Flashable/Player/player.tscn" id="1_x5tb4"]
 [ext_resource type="Texture2D" uid="uid://cv86jxw8hqo4y" path="res://Assets/sky/autumn_field_puresky_4k.exr" id="3_n0i3d"]
-[ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="5_hoqgj"]
+[ext_resource type="PackedScene" uid="uid://dn2rhl8bn6idp" path="res://Arenas/_global/wall/wall.tscn" id="3_n1kq0"]
 [ext_resource type="PackedScene" uid="uid://cnhj4xqk1w07l" path="res://Arenas/level_2/level_2.tscn" id="5_s7fvs"]
 [ext_resource type="PackedScene" uid="uid://dgkfibdgbd0un" path="res://Arenas/level_1/level_1.tscn" id="7_qfx6j"]
 [ext_resource type="PackedScene" uid="uid://cvt1aabx5tqug" path="res://Arenas/level_3/level_3.tscn" id="7_vcj16"]
@@ -13,14 +12,6 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="11_r2s6o"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_1n8td"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="13_6qmiu"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmdqs"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("5_hoqgj")
-metallic = 0.58
-metallic_specular = 0.53
-uv1_offset = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7apno"]
 panorama = ExtResource("3_n0i3d")
@@ -109,12 +100,11 @@ script = ExtResource("1_7xypt")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 236.686, 0.520074, 8.63939)
 
-[node name="Floor" parent="." instance=ExtResource("1_i4e41")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-collision_layer = 8
-collision_mask = 15
-size = Vector3(200, 1, 200)
-material = SubResource("StandardMaterial3D_rmdqs")
+[node name="Floor" parent="." instance=ExtResource("3_n1kq0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.252297, 0)
+wall_width = 200.0
+wall_height = 200.0
+wall_depth = 0.5
 
 [node name="FlashContainer" type="Node" parent="."]
 unique_name_in_owner = true

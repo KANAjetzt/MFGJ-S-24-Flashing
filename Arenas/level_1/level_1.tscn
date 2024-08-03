@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dmm55p3lirpfe" path="res://Arenas/_level_base/level_base.tscn" id="1_orow0"]
 [ext_resource type="Resource" uid="uid://dft6uepgtlhof" path="res://Arenas/level_1/level_1_data.tres" id="2_wfhvt"]
 [ext_resource type="PackedScene" uid="uid://dn2rhl8bn6idp" path="res://Arenas/_global/wall/wall.tscn" id="3_67rrc"]
-[ext_resource type="PackedScene" path="res://Flashable/Enemy/Enemy.tscn" id="4_i5ryv"]
+[ext_resource type="PackedScene" uid="uid://bcmun1x0uu6lq" path="res://Flashable/Enemy/Enemy.tscn" id="4_i5ryv"]
 [ext_resource type="PackedScene" uid="uid://cepu2lxamrwfc" path="res://Arenas/_global/player_area/wall_player_area.tscn" id="5_28w28"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_8xl0a"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="7_dndvx"]

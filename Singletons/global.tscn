@@ -50,6 +50,7 @@ _data = {
 script = ExtResource("1_hifrn")
 arenas = Array[ExtResource("2_d3kab")]([ExtResource("3_1bx6c"), ExtResource("4_l654u"), ExtResource("5_jx7rb"), ExtResource("6_mkf1e")])
 settings = ExtResource("7_aftys")
+disable_intro = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

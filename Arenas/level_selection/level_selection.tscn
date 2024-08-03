@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4x3lq23suk15"]
+[gd_scene load_steps=15 format=3 uid="uid://b4x3lq23suk15"]
 
 [ext_resource type="Script" path="res://Arenas/level_selection/level_selection.gd" id="1_j7p3f"]
-[ext_resource type="Texture2D" uid="uid://cmisawkdaq18b" path="res://addons/kenney_prototype_textures/dark/texture_07.png" id="1_xdfl2"]
 [ext_resource type="Resource" uid="uid://b2sxtsx2im1mt" path="res://Arenas/level_selection/level_selection_data.tres" id="2_f0u2k"]
 [ext_resource type="PackedScene" uid="uid://cjb2dteos4g55" path="res://Arenas/_global/portal/portal.tscn" id="2_x5fr8"]
+[ext_resource type="PackedScene" uid="uid://dn2rhl8bn6idp" path="res://Arenas/_global/wall/wall.tscn" id="3_qwwy0"]
 [ext_resource type="Resource" uid="uid://dft6uepgtlhof" path="res://Arenas/level_1/level_1_data.tres" id="4_p18kq"]
 [ext_resource type="Resource" uid="uid://d1vcprfux03fg" path="res://Arenas/level_2/level_2_data.tres" id="6_llywv"]
 [ext_resource type="Resource" uid="uid://4gxf0wf3n72b" path="res://Arenas/level_3/level_3_data.tres" id="7_rkwel"]
@@ -13,16 +13,6 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e0fjf"]
 height = 1.8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnb0l"]
-albedo_texture = ExtResource("1_xdfl2")
-uv1_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_73dsx"]
-size = Vector3(100, 1, 100)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5x5i2"]
-points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
 
 [sub_resource type="Resource" id="Resource_c168f"]
 script = ExtResource("9_2ossc")
@@ -61,17 +51,11 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907474, 0)
 mesh = SubResource("CapsuleMesh_e0fjf")
 
-[node name="Floor" type="StaticBody3D" parent="."]
-collision_layer = 8
-collision_mask = 31
-
-[node name="Floor" type="MeshInstance3D" parent="Floor"]
-material_override = SubResource("StandardMaterial3D_wnb0l")
-mesh = SubResource("BoxMesh_73dsx")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("ConvexPolygonShape3D_5x5i2")
+[node name="Floor" parent="." instance=ExtResource("3_qwwy0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.254996, 0)
+wall_width = 100.0
+wall_height = 100.0
+wall_depth = 0.5
 
 [node name="Portals" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.26732, 0, -0.662423)

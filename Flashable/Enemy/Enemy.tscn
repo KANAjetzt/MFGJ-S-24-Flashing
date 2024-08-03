@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://2ouem2oi6ehu"]
+[gd_scene load_steps=6 format=3 uid="uid://bcmun1x0uu6lq"]
 
 [ext_resource type="PackedScene" uid="uid://bapx4os5br1xe" path="res://Flashable/flashable.tscn" id="1_fgl0m"]
 [ext_resource type="Script" path="res://Flashable/Enemy/enemy.gd" id="2_xiujf"]
 [ext_resource type="Material" uid="uid://bwjvggncy0rdb" path="res://Flashable/Enemy/enemy_xray.tres" id="3_nvfbr"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_mpmaq"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ljoly"]
+points = PackedVector3Array(0, 0.25, 0.25, 0.25, -0.25, 0.25, 0, 0.25, -0.25, -0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, -0.25)
 
 [node name="Enemy" instance=ExtResource("1_fgl0m")]
 collision_layer = 2
@@ -10,4 +16,177 @@ collision_mask = 31
 script = ExtResource("2_xiujf")
 
 [node name="MeshInstance3D" parent="." index="1"]
+visible = false
 material_override = ExtResource("3_nvfbr")
+
+[node name="BodyParts" type="Node3D" parent="." index="3"]
+unique_name_in_owner = true
+metadata/_edit_group_ = true
+
+[node name="BodyPart1" type="RigidBody3D" parent="BodyParts" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256293, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart1" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart1" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart2" type="RigidBody3D" parent="BodyParts" index="1"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.258653, 0.256293, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart2" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart2" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart3" type="RigidBody3D" parent="BodyParts" index="2"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.255351, 0.256293, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart3" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart3" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart4" type="RigidBody3D" parent="BodyParts" index="3"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.000295997, 0.756668, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart4" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart4" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart5" type="RigidBody3D" parent="BodyParts" index="4"]
+transform = Transform3D(1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 1, 0.2606, 0.766403, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart5" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart5" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart6" type="RigidBody3D" parent="BodyParts" index="5"]
+transform = Transform3D(1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 1, -0.265086, 0.766403, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart6" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart6" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart7" type="RigidBody3D" parent="BodyParts" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26914, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart7" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart7" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart8" type="RigidBody3D" parent="BodyParts" index="7"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.258653, 1.26914, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart8" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart8" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart9" type="RigidBody3D" parent="BodyParts" index="8"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.255351, 1.26914, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart9" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart9" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart10" type="RigidBody3D" parent="BodyParts" index="9"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.000295997, 1.76952, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart10" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart10" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart11" type="RigidBody3D" parent="BodyParts" index="10"]
+transform = Transform3D(1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 1, 0.2606, 1.77925, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart11" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart11" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="BodyPart12" type="RigidBody3D" parent="BodyParts" index="11"]
+transform = Transform3D(1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 1, -0.265086, 1.77925, 0)
+collision_layer = 2
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyParts/BodyPart12" index="0"]
+material_override = ExtResource("3_nvfbr")
+mesh = SubResource("PrismMesh_mpmaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart12" index="1"]
+shape = SubResource("ConvexPolygonShape3D_ljoly")
