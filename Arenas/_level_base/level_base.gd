@@ -14,6 +14,9 @@ extends Node3D
 
 
 func _ready() -> void:
+	if level_data.main_transform:
+		global_transform = level_data.main_transform
+	
 	level_data.ref = self
 	level_data.start_transform = start_point.global_transform
 	level_data.enemy_count = enemies.get_child_count()

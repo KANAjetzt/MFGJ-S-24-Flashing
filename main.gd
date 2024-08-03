@@ -8,11 +8,13 @@ extends Node3D
 @onready var phantom_camera_3d: PhantomCamera3D = $PhantomCamera3D
 @onready var level_selection: LevelBase = %LevelSelection
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var levels: Node3D = %Levels
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.flash_container = flash_container
+	Global.level_container = levels
 	Global.camera = camera
 	
 	player.teleport(start_point_level_selection.global_transform)
@@ -25,6 +27,11 @@ func _ready() -> void:
 		player.activate_camera()
 	else:
 		level_selection.activate_camera()
+	
+	for node in levels.get_children():
+		var level: LevelBase = node
+		level.level_data.main_transform = level.global_transform
+		levels.remove_child(level)
 
 
 func _input(event: InputEvent) -> void:

@@ -4,5 +4,10 @@
 
 [resource]
 script = ExtResource("1_nmwwu")
-level_id = &"level_selection"
+is_active = true
+level_id = 0
 level_name = "Level Selection"
+is_locked = false
+is_completed = false
+has_been_completed = false
+unlocks = Array[ExtResource("1_nmwwu")]([])

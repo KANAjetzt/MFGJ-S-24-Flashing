@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_q0iq0")
+is_active = false
 level_id = 1
 level_name = "Level 1"
 is_locked = false
