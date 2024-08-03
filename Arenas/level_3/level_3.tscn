@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvt1aabx5tqug"]
+[gd_scene load_steps=9 format=3 uid="uid://cvt1aabx5tqug"]
 
 [ext_resource type="PackedScene" uid="uid://dmm55p3lirpfe" path="res://Arenas/_level_base/level_base.tscn" id="1_4ytts"]
 [ext_resource type="PackedScene" uid="uid://dn2rhl8bn6idp" path="res://Arenas/_global/wall/wall.tscn" id="2_7kdmi"]
@@ -9,8 +9,14 @@
 
 [sub_resource type="Resource" id="Resource_66js2"]
 script = ExtResource("6_efa7u")
-duration = 1.0
+duration = 0.0
 transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_2xddv"]
+script = ExtResource("6_efa7u")
+duration = 2.0
+transition = 4
 ease = 2
 
 [node name="Level3" instance=ExtResource("1_4ytts")]
@@ -77,4 +83,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.15
 wall_width = 20.0
 
 [node name="CameraStart" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, -5.96046e-08, 1, 0, -1, -5.96046e-08, 0, 51.2332, -12.7413)
 tween_resource = SubResource("Resource_66js2")
+
+[node name="CameraEnd" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 31.1877, -12.7413)
+tween_resource = SubResource("Resource_2xddv")
