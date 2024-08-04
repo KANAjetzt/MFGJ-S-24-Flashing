@@ -19,7 +19,6 @@ func _ready() -> void:
 	
 	player.teleport(start_point_level_selection.global_transform)
 	player.take()
-	player.throw.connect(_on_player_throw)
 	
 	Global.is_world_ready = true
 	
@@ -57,7 +56,6 @@ func _on_player_throw(flash: Flash, origin: Vector3, force: Vector3) -> void:
 	flash.global_position = origin
 	flash.freeze = false
 	flash.apply_impulse(force, origin)
-	await get_tree().create_timer(0.25).timeout
 	player.take()
 
 

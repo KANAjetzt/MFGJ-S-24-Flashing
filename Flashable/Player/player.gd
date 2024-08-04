@@ -18,9 +18,15 @@ const MOUSE_SENSITIVITY = 0.25
 @onready var flash_container: Node3D = %FlashContainer
 @onready var hand: Node3D = %Hand
 @onready var flash_dummy: Flash = %FlashDummy
-@onready var crosshair: TextureRect = %Crosshair
 @onready var camera: PhantomCamera3D = %Camera
 
+var can_throw := true :
+	set(new_value):
+		can_throw = new_value
+		if new_value == true:
+			flash_dummy.show()
+		else:
+			flash_dummy.hide()
 var current_flash: Flash
 
 
@@ -41,7 +47,11 @@ func _input(event: InputEvent) -> void:
 		init_throw()
 	
 	if event.is_action_pressed("throw_light"):
+		init_throw_before()
+		
+	if event.is_action_released("throw_light"):
 		init_light_throw()
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -67,11 +77,15 @@ func _physics_process(delta: float) -> void:
 
 
 func take() -> void:
-	flash_dummy.show()
+	await get_tree().create_timer(0.25).timeout
+	can_throw = true
 
 
 func init_throw_before() -> void:
-	flash_dummy.hide()
+	if not can_throw:
+		return
+		
+	can_throw = false
 	current_flash = flash_scene.instantiate()
 	flash_container.add_child(current_flash)
 	throw_before.emit(current_flash, Global.camera.global_position, -Global.camera.get_global_transform().basis.z * throw_force_multiplier)
@@ -84,8 +98,9 @@ func init_throw() -> void:
 
 
 func init_light_throw() -> void:
-	flash_dummy.hide()
-	throw.emit(flash_scene.instantiate(), Global.camera.global_position, (-Global.camera.get_global_transform().basis.z + Vector3(0.0, 0.9, 0.0)) * light_throw_force_multiplier)
+	flash_container.remove_child(current_flash)
+	throw.emit(current_flash, Global.camera.global_position, (-Global.camera.get_global_transform().basis.z + Vector3(0.0, 0.9, 0.0)) * light_throw_force_multiplier)
+	current_flash = null
 
 
 func teleport(transfrom: Transform3D) -> void:
