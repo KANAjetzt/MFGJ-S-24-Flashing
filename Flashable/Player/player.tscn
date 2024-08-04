@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://db78owqyj73hw"]
+[gd_scene load_steps=11 format=3 uid="uid://db78owqyj73hw"]
 
 [ext_resource type="Script" path="res://Flashable/Player/player.gd" id="1_bnsm5"]
 [ext_resource type="PackedScene" uid="uid://bapx4os5br1xe" path="res://Flashable/flashable.tscn" id="1_bwbbs"]
@@ -28,15 +28,6 @@ frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
 
-[sub_resource type="Gradient" id="Gradient_jhhxl"]
-offsets = PackedFloat32Array(0, 0.0558252, 0.0606796)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_aivgo"]
-gradient = SubResource("Gradient_jhhxl")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [node name="Player" instance=ExtResource("1_bwbbs")]
 collision_mask = 59
 script = ExtResource("1_bnsm5")
@@ -55,13 +46,17 @@ collide_with_areas = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70092, 0)
 
-[node name="Camera" type="Node3D" parent="Head" index="0"]
+[node name="FlashContainer" type="Node3D" parent="Head" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.234268, 0.137449)
+
+[node name="Camera" type="Node3D" parent="Head" index="1"]
 unique_name_in_owner = true
 script = ExtResource("5_ywet3")
 tween_resource = SubResource("Resource_k0ndy")
 camera_3d_resource = SubResource("Resource_wtlv6")
 
-[node name="Hand" type="Node3D" parent="Head" index="1"]
+[node name="Hand" type="Node3D" parent="Head" index="2"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70099, -0.443401, -0.920213)
 
@@ -72,16 +67,3 @@ collision_layer = 1
 collision_mask = 1
 physics_material_override = null
 continuous_cd = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
-
-[node name="Crosshair" type="TextureRect" parent="CanvasLayer" index="0"]
-unique_name_in_owner = true
-modulate = Color(0.721466, 0.0735135, 1, 1)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_aivgo")
-stretch_mode = 3

@@ -45,15 +45,18 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("debug_0"):
 		Global.current_arena.ref.fade_in_level()
-	
+
+
+func _on_player_throw_before(flash: Flash, origin: Vector3, force: Vector3) -> void:
+	flash.flashed.connect(_on_flash_flashed)
+	flash.start_detonation_timer()
+
 
 func _on_player_throw(flash: Flash, origin: Vector3, force: Vector3) -> void:
 	flash_container.add_child(flash)
-	flash.flashed.connect(_on_flash_flashed)
 	flash.global_position = origin
 	flash.freeze = false
 	flash.apply_impulse(force, origin)
-	flash.start_detonation_timer()
 	await get_tree().create_timer(0.25).timeout
 	player.take()
 

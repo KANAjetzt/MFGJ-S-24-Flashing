@@ -1,6 +1,7 @@
 extends Flashable
 class_name Player
 
+signal throw_before(flash: Flash, origin: Vector3, force: Vector3)
 signal throw(flash: Flash, origin: Vector3, force: Vector3)
 
 @export var flash_scene: PackedScene
@@ -14,15 +15,17 @@ const JUMP_VELOCITY = 4.5
 const MOUSE_SENSITIVITY = 0.25
 
 @onready var head: Node3D = %Head
+@onready var flash_container: Node3D = %FlashContainer
 @onready var hand: Node3D = %Hand
 @onready var flash_dummy: Flash = %FlashDummy
 @onready var crosshair: TextureRect = %Crosshair
 @onready var camera: PhantomCamera3D = %Camera
 
+var current_flash: Flash
+
 
 func _ready() -> void:
 	Global.player = self
-	crosshair.modulate = Global.settings.crosshair_color
 
 
 func _input(event: InputEvent) -> void:
@@ -30,8 +33,11 @@ func _input(event: InputEvent) -> void:
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
 		head.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-
+	
 	if event.is_action_pressed("throw"):
+		init_throw_before()
+	
+	if event.is_action_released("throw"):
 		init_throw()
 	
 	if event.is_action_pressed("throw_light"):
@@ -64,9 +70,17 @@ func take() -> void:
 	flash_dummy.show()
 
 
-func init_throw() -> void:
+func init_throw_before() -> void:
 	flash_dummy.hide()
-	throw.emit(flash_scene.instantiate(), Global.camera.global_position, -Global.camera.get_global_transform().basis.z * throw_force_multiplier)
+	current_flash = flash_scene.instantiate()
+	flash_container.add_child(current_flash)
+	throw_before.emit(current_flash, Global.camera.global_position, -Global.camera.get_global_transform().basis.z * throw_force_multiplier)
+	
+
+func init_throw() -> void:
+	flash_container.remove_child(current_flash)
+	throw.emit(current_flash, Global.camera.global_position, -Global.camera.get_global_transform().basis.z * throw_force_multiplier)
+	current_flash = null
 
 
 func init_light_throw() -> void:

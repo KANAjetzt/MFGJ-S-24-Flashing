@@ -131,3 +131,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_cwelm")
+
+[connection signal="throw" from="Player" to="." method="_on_player_throw"]
+[connection signal="throw_before" from="Player" to="." method="_on_player_throw_before"]
