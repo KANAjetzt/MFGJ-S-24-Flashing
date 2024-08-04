@@ -28,6 +28,12 @@ var can_throw := true :
 		else:
 			flash_dummy.hide()
 var current_flash: Flash
+# flash_count -1 == no flash limit
+var flash_count := -1 :
+	set(new_value):
+		flash_count = new_value
+		if flash_count == 0:
+			can_throw = false
 
 
 func _ready() -> void:
@@ -77,14 +83,17 @@ func _physics_process(delta: float) -> void:
 
 
 func take() -> void:
+	if flash_count == 0:
+		return
 	await get_tree().create_timer(0.25).timeout
 	can_throw = true
 
 
 func init_throw_before() -> void:
-	if not can_throw:
+	if not can_throw or flash_count == 0:
 		return
 		
+	flash_count = flash_count - 1
 	can_throw = false
 	current_flash = flash_scene.instantiate()
 	flash_container.add_child(current_flash)
@@ -92,12 +101,18 @@ func init_throw_before() -> void:
 	
 
 func init_throw() -> void:
+	if not current_flash:
+		return
+		
 	flash_container.remove_child(current_flash)
 	throw.emit(current_flash, Global.camera.global_position, -Global.camera.get_global_transform().basis.z * throw_force_multiplier)
 	current_flash = null
 
 
 func init_light_throw() -> void:
+	if not current_flash:
+		return
+		
 	flash_container.remove_child(current_flash)
 	throw.emit(current_flash, Global.camera.global_position, (-Global.camera.get_global_transform().basis.z + Vector3(0.0, 0.9, 0.0)) * light_throw_force_multiplier)
 	current_flash = null

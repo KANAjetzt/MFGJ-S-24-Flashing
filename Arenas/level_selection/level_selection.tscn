@@ -92,8 +92,8 @@ script = ExtResource("8_0x0j6")
 tween_resource = SubResource("Resource_q55tr")
 camera_3d_resource = SubResource("Resource_7gwis")
 
-[connection signal="flash_hit_detected" from="Portals/Portal" to="." method="_on_portal_3_flash_hit_detected"]
-[connection signal="flash_hit_detected" from="Portals/Portal2" to="." method="_on_portal_3_flash_hit_detected"]
-[connection signal="flash_hit_detected" from="Portals/Portal3" to="." method="_on_portal_3_flash_hit_detected"]
+[connection signal="hit_detected" from="Portals/Portal" to="." method="_on_portal_hit_detected"]
+[connection signal="hit_detected" from="Portals/Portal2" to="." method="_on_portal_hit_detected"]
+[connection signal="hit_detected" from="Portals/Portal3" to="." method="_on_portal_hit_detected"]
 [connection signal="tween_completed" from="CameraStart" to="." method="_on_camera_start_tween_completed"]
 [connection signal="tween_completed" from="CameraEnd" to="." method="_on_camera_end_tween_completed"]

@@ -27,7 +27,7 @@ func _ready() -> void:
 		enemy.flashed.connect(_on_enemy_flashed)
 
 
-func _on_portal_exit_flash_hit_detected(destination: LevelData) -> void:
+func _on_portal_exit_hit_detected(destination: LevelData) -> void:
 	Global.player.teleport(destination.start_transform)
 
 

@@ -2,11 +2,11 @@ class_name Portal
 extends StaticBody3D
 
 
-signal flash_hit_detected(destination: LevelData)
+signal hit_detected(destination: LevelData)
 
 @export var destination: LevelData
 
-@onready var flash_hit_detector: Area3D = %FlashHitDetector
+@onready var hit_detector: Area3D = %HitDetector
 @onready var label_level_name: Label3D = %LabelLevelName
 
 
@@ -15,10 +15,10 @@ func _ready() -> void:
 	destination.level_completed.connect(_on_level_completed)
 
 
-func _on_flash_hit_detector_body_entered(body: Node3D) -> void:
+func _on_hit_detector_body_entered(body: Node3D) -> void:
 	if not destination.is_locked:
 		Global.current_arena_index = destination.level_id
-		flash_hit_detected.emit(destination)
+		hit_detected.emit(destination)
 	else:
 		print("Sorry Destination is locked ❁´◡`❁)")
 

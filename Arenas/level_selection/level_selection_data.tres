@@ -11,3 +11,5 @@ is_locked = false
 is_completed = false
 has_been_completed = false
 unlocks = Array[ExtResource("1_nmwwu")]([])
+flash_limit = 5
+flash_limit_active = false

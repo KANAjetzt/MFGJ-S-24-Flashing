@@ -25,6 +25,9 @@ signal level_completed
 @export var has_been_completed := false
 ## List of levels that are unlocked by completing this one
 @export var unlocks: Array[LevelData] = []
+## Amount of flashes allowed in this level 
+@export var flash_limit := 5
+@export var flash_limit_active := true
 
 ## Reference of the instanced level
 var ref: LevelBase

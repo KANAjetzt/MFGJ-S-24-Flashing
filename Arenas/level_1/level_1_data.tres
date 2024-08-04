@@ -12,3 +12,4 @@ is_locked = false
 is_completed = false
 has_been_completed = false
 unlocks = Array[ExtResource("1_q0iq0")]([ExtResource("2_au1nb")])
+flash_limit = 1
