@@ -17,11 +17,21 @@ func _ready() -> void:
 
 func _on_hit_detector_body_entered(body: Node3D) -> void:
 	if not destination.is_locked:
+		
+		# Update the current arena index
 		Global.current_arena_index = destination.level_id
+		
+		# Update flash limit
 		if destination.flash_limit_active:
 			Global.player.flash_count = destination.flash_limit
 		else:
 			Global.player.flash_count = -1
+		
+		Global.hud.panel_enemy_count.label_text = str(destination.enemy_count)
+		
+		# Reset the level timer
+		Global.time_level_start = Global.time_game
+		
 		hit_detected.emit(destination)
 	else:
 		print("Sorry Destination is locked ❁´◡`❁)")

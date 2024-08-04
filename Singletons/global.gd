@@ -46,17 +46,27 @@ var previous_camera: PhantomCamera3D = null :
 		previous_camera = new_value
 		previous_camera.set_priority(0)
 
+var time_level_start: int
+var time_level: int :
+	set(new_value) :
+		time_level = new_value
+		hud.panel_time_level.label_text = hud.format_stopwatch(new_value)
+var time_game: int :
+	set(new_value):
+		time_game = new_value
+		hud.panel_time_game.label_text = hud.format_stopwatch(new_value)
+
+
 @onready var crosshair: TextureRect = %Crosshair
+@onready var hud: UIHUD = %HUD
 
 
-func _ready() -> void:
-	settings.crosshair_color_changed.connect(_on_crosshair_color_changed)
-	crosshair.modulate = settings.crosshair_color
+func _process(delta: float) -> void:
+	time_game = Time.get_ticks_msec()
+	
+	if time_level_start:
+		time_level = time_game - time_level_start 
 
 
 func blend() -> void:
 	%AnimationPlayer.play("blend")
-
-
-func _on_crosshair_color_changed(new_color: Color) -> void:
-	crosshair.modulate = new_color

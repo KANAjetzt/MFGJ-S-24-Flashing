@@ -43,6 +43,8 @@ var enemies_flashed_count: int :
 	set(new_value):
 		enemies_flashed_count = new_value
 		
+		Global.hud.panel_enemy_count.label_text = str(enemy_count - new_value)
+		
 		if enemies_flashed_count >= enemy_count:
 			is_completed = true
 			has_been_completed = true

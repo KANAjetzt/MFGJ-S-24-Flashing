@@ -36,6 +36,11 @@ var flash_count := -1 :
 			can_throw = false
 		if flash_count > 0 or flash_count == -1:
 			can_throw = true
+		if flash_count == -1:
+			Global.hud.panel_flash_count.label_text = "unlimited"
+		else:
+			Global.hud.panel_flash_count.label_text = "%sx" % new_value
+		
 # Used to disable throwing and moving in camera transitions
 var is_input_disabled := false
 
@@ -102,8 +107,9 @@ func take() -> void:
 func init_throw_before() -> void:
 	if not can_throw or flash_count == 0:
 		return
-		
-	flash_count = flash_count - 1
+	
+	if not flash_count == -1:
+		flash_count = flash_count - 1
 	can_throw = false
 	current_flash = flash_scene.instantiate()
 	flash_container.add_child(current_flash)
