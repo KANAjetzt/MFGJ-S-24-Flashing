@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://nftf0ks741kg"]
+
+[ext_resource type="Script" path="res://UI/panel_icon_label.gd" id="1_0qb2s"]
+
+[node name="PanelIconLabel" type="PanelContainer"]
+size_flags_horizontal = 8
+size_flags_vertical = 8
+script = ExtResource("1_0qb2s")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Container" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "5x"
