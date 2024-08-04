@@ -12,7 +12,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	Global.settings.crosshair_color_changed.connect(_on_crosshair_color_changed)
-	crosshair.modulate = Global.settings.crosshair_color
+	crosshair.modulate = Global.settings.gameplay_crosshair_color
 
 
 func format_stopwatch(elapsed_time: int) -> String:

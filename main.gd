@@ -36,12 +36,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_capture"):
-		if Global.is_mouse_locked:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			Global.is_mouse_locked = false
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			Global.is_mouse_locked = true
+		Utils.toggle_mouse_lock()
 	
 	if event.is_action_pressed("debug_0"):
 		Global.current_arena.ref.fade_in_level()

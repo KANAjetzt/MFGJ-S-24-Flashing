@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://ng35aw6p4k74"]
+
+[ext_resource type="Script" path="res://UI/options_menu/options_sound.gd" id="1_7vf5m"]
+[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="1_55gjh"]
+[ext_resource type="PackedScene" uid="uid://dl28cl7ejmiod" path="res://UI/options_menu/option_slider.tscn" id="1_lusaw"]
+
+[node name="SettingsAudio" type="VBoxContainer"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+script = ExtResource("1_7vf5m")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_55gjh")
+theme_override_font_sizes/font_size = 24
+text = "Sound"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="AudioMain" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_lusaw")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Main"
+slider_max = 100.0
+slider_step = 1.0
+spin_box_max = 100.0
+spin_box_step = 1.0
+
+[node name="AudioMusic" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_lusaw")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Music"
+slider_max = 100.0
+slider_step = 1.0
+spin_box_max = 100.0
+spin_box_step = 1.0
+
+[node name="AudioSound" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_lusaw")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "SFX"
+slider_max = 100.0
+slider_step = 1.0
+spin_box_max = 100.0
+spin_box_step = 1.0
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/AudioMain" to="." method="_on_audio_main_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/AudioMusic" to="." method="_on_audio_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/AudioSound" to="." method="_on_audio_sound_value_changed"]

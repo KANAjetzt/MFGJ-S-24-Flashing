@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqxxp1dbyt03d"]
+
+[ext_resource type="Script" path="res://UI/pause_screen/pause_screen.gd" id="1_6xk5k"]
+[ext_resource type="PackedScene" uid="uid://dmm72lumy23dq" path="res://UI/options_menu/options_menu.tscn" id="3_tsnqy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5heo1"]
+
+[node name="PauseScreen" type="PanelContainer"]
+process_mode = 3
+material = SubResource("ShaderMaterial_5heo1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6xk5k")
+
+[node name="OptionsMenu" parent="." instance=ExtResource("3_tsnqy")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="back_pressed" from="OptionsMenu" to="." method="_on_options_menu_back_pressed"]

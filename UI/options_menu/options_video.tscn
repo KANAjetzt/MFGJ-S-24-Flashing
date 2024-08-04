@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://h4p4r66cv7mx"]
+
+[ext_resource type="PackedScene" uid="uid://b6rbo5rdoo18u" path="res://UI/options_menu/options_panel.tscn" id="1_8knni"]
+[ext_resource type="Script" path="res://UI/options_menu/options_video.gd" id="2_bscm4"]
+[ext_resource type="PackedScene" uid="uid://70vhv8u5s7u8" path="res://UI/options_menu/options_check_button.tscn" id="3_1bu2m"]
+
+[node name="OptionsVideo" instance=ExtResource("1_8knni")]
+script = ExtResource("2_bscm4")
+
+[node name="Title" parent="." index="0"]
+text = "Video"
+
+[node name="OptionFullScreen" parent="MarginContainer/Options" index="0" instance=ExtResource("3_1bu2m")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Full Screen"
+
+[connection signal="value_changed" from="MarginContainer/Options/OptionFullScreen" to="." method="_on_options_check_button_value_changed"]

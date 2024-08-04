@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl28cl7ejmiod"]
+
+[ext_resource type="Script" path="res://UI/options_menu/option_slider.gd" id="1_iaere"]
+
+[node name="OptionSlider" type="HBoxContainer"]
+offset_right = 321.0
+offset_bottom = 23.0
+size_flags_horizontal = 0
+theme_override_constants/separation = 25
+script = ExtResource("1_iaere")
+
+[node name="Title" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "%TITLE%"
+
+[node name="Slider" type="HSlider" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Value" type="SpinBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TimerSetValue" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+
+[connection signal="drag_ended" from="Slider" to="." method="_on_slider_drag_ended"]
+[connection signal="drag_started" from="Slider" to="." method="_on_slider_drag_started"]
+[connection signal="value_changed" from="Slider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Value" to="." method="_on_value_value_changed"]
+[connection signal="timeout" from="TimerSetValue" to="." method="_on_timer_set_value_timeout"]

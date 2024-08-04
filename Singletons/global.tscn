@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://du6620k06agnp"]
+[gd_scene load_steps=17 format=3 uid="uid://du6620k06agnp"]
 
 [ext_resource type="Script" path="res://Singletons/global.gd" id="1_hifrn"]
 [ext_resource type="Script" path="res://Arenas/_global/level_data.gd" id="2_d3kab"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ba0ofy0p3yykp" path="res://icon.svg" id="8_f0ed8"]
 [ext_resource type="PackedScene" uid="uid://nftf0ks741kg" path="res://UI/panel_icon_label.tscn" id="8_kcrgv"]
 [ext_resource type="Script" path="res://Singletons/hud.gd" id="8_mx27g"]
+[ext_resource type="PackedScene" uid="uid://cqxxp1dbyt03d" path="res://UI/pause_screen/pause_screen.tscn" id="11_usd3o"]
 
 [sub_resource type="Gradient" id="Gradient_rumwn"]
 offsets = PackedFloat32Array(0, 0.0558252, 0.0606796)
@@ -130,6 +131,10 @@ size_flags_horizontal = 0
 label_text = "00 : 00 : 00"
 icon_texture = ExtResource("8_f0ed8")
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" parent="UI" instance=ExtResource("11_usd3o")]
+
 [node name="Overlay" type="CanvasLayer" parent="."]
 
 [node name="Blend" type="ColorRect" parent="Overlay"]
@@ -139,6 +144,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
