@@ -19,6 +19,7 @@ func _ready() -> void:
 	
 	player.teleport(start_point_level_selection.global_transform)
 	player.take()
+	player.is_input_disabled = true
 	
 	Global.is_world_ready = true
 	

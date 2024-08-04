@@ -11,6 +11,7 @@ var bodies_in_range: Array[Flashable] = []
 @onready var particles_explosion: GPUParticles3D = %ParticlesExplosion
 @onready var light_explosion: OmniLight3D = %LightExplosion
 @onready var shell: Node3D = %Shell
+@onready var flash_collision: CollisionShape3D = %FlashCollision
 
 
 func start_detonation_timer() -> void:
@@ -26,6 +27,7 @@ func _on_timer_detonate_timeout() -> void:
 	sfx.play()
 	particles_explosion.emitting = true
 	flashed.emit(self, bodies_in_range)
+	flash_collision.disabled = true
 	shell.hide()
 	flash_radius.hide()
 	light_explosion.hide()

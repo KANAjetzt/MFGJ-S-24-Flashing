@@ -53,6 +53,7 @@ func _ready() -> void:
 	settings.crosshair_color_changed.connect(_on_crosshair_color_changed)
 	crosshair.modulate = settings.crosshair_color
 
+
 func blend() -> void:
 	%AnimationPlayer.play("blend")
 

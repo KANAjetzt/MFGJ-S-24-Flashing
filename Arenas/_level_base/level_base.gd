@@ -12,7 +12,6 @@ extends Node3D
 @onready var camera_end: PhantomCamera3D = %CameraEnd
 
 
-
 func _ready() -> void:
 	if level_data.main_transform:
 		global_transform = level_data.main_transform

@@ -34,6 +34,10 @@ var flash_count := -1 :
 		flash_count = new_value
 		if flash_count == 0:
 			can_throw = false
+		if flash_count > 0 or flash_count == -1:
+			can_throw = true
+# Used to disable throwing and moving in camera transitions
+var is_input_disabled := false
 
 
 func _ready() -> void:
@@ -41,6 +45,9 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if is_input_disabled:
+		return
+	
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
 		head.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
@@ -60,16 +67,19 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	handle_movement(delta)
+
+
+func handle_movement(delta: float) -> void:
+	if is_input_disabled:
+		return
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+			
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -124,3 +134,7 @@ func teleport(transfrom: Transform3D) -> void:
 
 func activate_camera() -> void:
 	Global.active_camera = camera
+
+
+func _on_camera_tween_completed() -> void:
+	is_input_disabled = false

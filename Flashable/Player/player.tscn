@@ -67,3 +67,5 @@ collision_layer = 1
 collision_mask = 1
 physics_material_override = null
 continuous_cd = false
+
+[connection signal="tween_completed" from="Head/Camera" to="." method="_on_camera_tween_completed"]
