@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var panel_time_game: UIPanelIconLabel = %PanelTimeGame
 
 @onready var crosshair: TextureRect = %Crosshair
+@onready var skip: HBoxContainer = %Skip
 
 
 func _ready() -> void:
@@ -23,6 +24,16 @@ func format_stopwatch(elapsed_time: int) -> String:
 	var ms = milliseconds / 10  # Get the first two digits of the milliseconds
 
 	return "%02d:%02d:%02d" % [minutes, seconds, ms]
+
+
+func skip_display_fade_in() -> void:
+	var tween := create_tween()
+	tween.tween_property(skip, "modulate:a", 1.0, 0.2)
+
+
+func skip_display_fade_out() -> void:
+	var tween := create_tween()
+	tween.tween_property(skip, "modulate:a", 0.0, 0.2)
 
 
 func _on_crosshair_color_changed(new_color: Color) -> void:

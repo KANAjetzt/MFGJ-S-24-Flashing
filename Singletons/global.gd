@@ -18,6 +18,7 @@ var is_mouse_locked := true
 var flash_container: Node
 var level_container: Node3D
 var player: Player
+
 var current_arena: LevelData :
 	set(new_value):
 		previous_arena = current_arena
@@ -40,11 +41,15 @@ var active_camera: PhantomCamera3D :
 			previous_camera = active_camera
 		active_camera = new_value
 		active_camera.set_priority(1)
-		
+		active_camera.is_tweening.connect(_on_camera_is_tweening)
+		active_camera.tween_completed.connect(_on_camera_tween_completed)
 var previous_camera: PhantomCamera3D = null :
 	set(new_value):
 		previous_camera = new_value
 		previous_camera.set_priority(0)
+		previous_camera.is_tweening.disconnect(_on_camera_is_tweening)
+		previous_camera.tween_completed.disconnect(_on_camera_tween_completed)
+var camera_is_tweening := false
 
 var time_level_start: int
 var time_level: int :
@@ -59,6 +64,7 @@ var time_game: int :
 
 @onready var crosshair: TextureRect = %Crosshair
 @onready var hud: UIHUD = %HUD
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 
 func _process(delta: float) -> void:
@@ -70,3 +76,12 @@ func _process(delta: float) -> void:
 
 func blend() -> void:
 	%AnimationPlayer.play("blend")
+
+
+func _on_camera_is_tweening() -> void:
+	camera_is_tweening = true
+	hud.skip_display_fade_in()
+
+func _on_camera_tween_completed() -> void:
+	camera_is_tweening = false
+	hud.skip_display_fade_out()

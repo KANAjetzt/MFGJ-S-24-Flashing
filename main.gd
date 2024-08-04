@@ -40,6 +40,9 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("debug_0"):
 		Global.current_arena.ref.fade_in_level()
+	
+	if Global.camera_is_tweening and event.is_action_pressed("skip"):
+		Global.player.activate_camera()
 
 
 func _on_player_throw_before(flash: Flash, origin: Vector3, force: Vector3) -> void:
