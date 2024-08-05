@@ -16,18 +16,18 @@ func _ready() -> void:
 	Global.flash_container = flash_container
 	Global.level_container = levels
 	Global.camera = camera
-	
+
 	player.teleport(start_point_level_selection.global_transform)
 	player.take()
 	player.is_input_disabled = true
-	
+
 	Global.is_world_ready = true
-	
+
 	if Global.disable_intro:
 		player.activate_camera()
 	else:
 		level_selection.activate_camera()
-	
+
 	for node in levels.get_children():
 		var level: LevelBase = node
 		level.level_data.main_transform = level.global_transform
@@ -37,10 +37,10 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_capture"):
 		Utils.toggle_mouse_lock()
-	
+
 	if event.is_action_pressed("debug_0"):
 		Global.current_arena.ref.fade_in_level()
-	
+
 	if Global.camera_is_tweening and event.is_action_pressed("skip"):
 		Global.player.activate_camera()
 

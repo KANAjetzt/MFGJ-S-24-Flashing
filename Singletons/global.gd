@@ -5,6 +5,7 @@ signal world_ready
 
 @export var arenas: Array[LevelData]
 @export var settings: SettingsData
+@export var score_data: ScoreData
 
 @export_group("Debug")
 @export var disable_intro := false
@@ -69,9 +70,9 @@ var time_game: int :
 
 func _process(delta: float) -> void:
 	time_game = Time.get_ticks_msec()
-	
+
 	if time_level_start:
-		time_level = time_game - time_level_start 
+		time_level = time_game - time_level_start
 
 
 func blend() -> void:
