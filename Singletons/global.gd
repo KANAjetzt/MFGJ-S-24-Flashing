@@ -57,6 +57,7 @@ var time_level: int :
 	set(new_value) :
 		time_level = new_value
 		hud.panel_time_level.label_text = hud.format_stopwatch(new_value)
+		current_arena.level_current_time = new_value
 var time_game: int :
 	set(new_value):
 		time_game = new_value
@@ -86,3 +87,7 @@ func _on_camera_is_tweening() -> void:
 func _on_camera_tween_completed() -> void:
 	camera_is_tweening = false
 	hud.skip_display_fade_out()
+
+
+func add_flash_score(enemies_flashed: int) -> void:
+	pass

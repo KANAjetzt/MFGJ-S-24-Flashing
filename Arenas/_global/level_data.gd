@@ -20,7 +20,25 @@ signal level_completed
 ## True if the level has the unlocked by something
 @export var is_locked := false
 ## Current completion state of the level
-@export var is_completed := false
+@export var is_completed := false :
+	set(new_value):
+		is_completed = new_value
+		if is_completed:
+			has_been_completed = true
+			handle_unlocks()
+			level_completed.emit()
+			print("LevelData: Level Completed!")
+			
+			if flashes_used <= 1:
+				score_flashes_bonus = Global.score_data.flashes_bonus
+			
+			if level_current_time < level_time_best:
+				level_time_best = level_current_time
+			
+			score_time_calc()
+			
+			level_score = score_get_all()
+
 ## True if the level has been completed in the past TODO: Add save system ?!
 @export var has_been_completed := false
 ## List of levels that are unlocked by completing this one
@@ -51,42 +69,94 @@ var enemies_flashed_count: int :
 		Global.hud.panel_enemy_count.label_text = str(enemy_count - new_value)
 
 		if enemies_flashed_count >= enemy_count:
+			await Global.get_tree().create_timer(0.5).timeout
 			is_completed = true
-			has_been_completed = true
-			handle_unlocks()
-			level_completed.emit()
-			print("LevelData: Level Completed!")
 
 		if enemies_flashed_count > enemies_flashed_count_best:
 			enemies_flashed_count_best = enemies_flashed_count
 
-
 ## The "high score" of the level
-var enemies_flashed_count_best: int
+var enemies_flashed_count_best: int = 0
 
-# 1000 / flash_limit
-var score_per_flash: int
+## The amount flashes used to complete the level
+var flashes_used: int = 0 :
+	set(new_value):
+		flashes_used = new_value
+		if flashes_used > 1:
+			score_flashes_used = Global.score_data.flashes - ((flashes_used - 1) * score_per_flash)
+		else:
+			score_flashes_used = Global.score_data.flashes
 
-## 1000 - score_per_flash * flashes used
-var score_flashes_used: int
+## Current time spend on this level in ms
+var level_current_time: int = 0 :
+	set(new_value):
+		level_current_time = new_value
+		if level_current_time % 500:
+			if level_current_time < level_time * 1000:
+				score_time_bonus = Global.score_data.time_bonus * (level_time - level_current_time / 1000)
+				score_time = Global.score_data.time + score_time_bonus
+			else:
+				score_time_reduction = Global.score_data.time_reduction * (level_current_time / 1000 - level_time)
+				score_time = Global.score_data.time - score_time_reduction
+		
+## Best time on this level
+var level_time_best: int = INF
+
+## Combined score of the level
+var level_score: int = 0 :
+	set(new_value):
+		level_score = new_value
+		if level_score > level_score_best:
+			level_score_best = level_score
+## Best combined score of this level
+var level_score_best: int = 0
+
+# flash score max / flash_limit - 1
+var score_per_flash: int = 0
+## flash score max - score_per_flash * flashes used
+var score_flashes_used: int = 0
 ## Bonus Points for one flash used
-var score_flashes_bonus: int
+var score_flashes_bonus: int = 0 :
+	set(new_value):
+		score_flashes_bonus = new_value
+		score_flashes_used = score_flashes_used + score_flashes_bonus
 
 ## 100 Points for each Enemy flashed
-var score_enemy: int
+var score_enemy: int = 0
 ## Combo Bonus +50 Points for each multiple
-var score_enemy_bonus: int
+var score_enemy_bonus: int = 0
 
 ## Base Time / 500 Points
-## -10 Points for each second above level_time
-var score_time: int
+var score_time: int = 0
 ## +10 Points for each second unter level_time
-var score_time_bonus: int
-
-var level_score: int
-var level_score_best: int
+var score_time_bonus: int = 0
+## -10 Points for each second above level_time
+var score_time_reduction: int = 0
 
 
 func handle_unlocks() -> void:
 	for unlock in unlocks:
 		unlock.is_locked = false
+
+
+func score_add_enemy() -> void:
+	score_enemy += Global.score_data.enemies
+
+
+func score_add_enemy_bonus(enemy_count: int) -> void:
+	var current_bonus = (enemy_count - 1) * Global.score_data.enemies_bonus
+	score_enemy += current_bonus
+	score_enemy_bonus += current_bonus
+
+
+func score_time_calc() -> void:
+	if level_current_time < level_time * 1000:
+		score_time_bonus = Global.score_data.time_bonus * (level_time - level_current_time / 1000)
+		score_time = Global.score_data.time + score_time_bonus
+	else:
+		score_time_reduction = Global.score_data.time_reduction * (level_current_time / 1000 - level_time)
+		score_time = Global.score_data.time - score_time_reduction
+
+
+func score_get_all() -> int:
+	return score_flashes_used + score_enemy + score_time

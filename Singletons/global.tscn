@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://du6620k06agnp"]
+[gd_scene load_steps=19 format=3 uid="uid://du6620k06agnp"]
 
 [ext_resource type="Script" path="res://Singletons/global.gd" id="1_hifrn"]
 [ext_resource type="Script" path="res://Arenas/_global/level_data.gd" id="2_d3kab"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ba0ofy0p3yykp" path="res://icon.svg" id="8_f0ed8"]
 [ext_resource type="PackedScene" uid="uid://nftf0ks741kg" path="res://UI/panel_icon_label.tscn" id="8_kcrgv"]
 [ext_resource type="Script" path="res://Singletons/hud.gd" id="8_mx27g"]
+[ext_resource type="Resource" uid="uid://bsa7h41u42vxc" path="res://Data/score_data.tres" id="8_pedsl"]
 [ext_resource type="Texture2D" uid="uid://coqj2fcsaxvcn" path="res://addons/controller_icons/assets/key/space.png" id="11_pld3a"]
 [ext_resource type="PackedScene" uid="uid://cqxxp1dbyt03d" path="res://UI/pause_screen/pause_screen.tscn" id="11_usd3o"]
 
@@ -64,6 +65,7 @@ _data = {
 script = ExtResource("1_hifrn")
 arenas = Array[ExtResource("2_d3kab")]([ExtResource("3_1bx6c"), ExtResource("4_l654u"), ExtResource("5_jx7rb"), ExtResource("6_mkf1e")])
 settings = ExtResource("7_aftys")
+score_data = ExtResource("8_pedsl")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

@@ -21,11 +21,16 @@ func _on_hit_detector_body_entered(body: Node3D) -> void:
 		# Update the current arena index
 		Global.current_arena_index = destination.level_id
 		
+		# Free all curren flashes
+		Utils.free_all_children(Global.flash_container)
+		
 		# Update flash limit
 		if destination.flash_limit_active:
 			Global.player.flash_count = destination.flash_limit
+			destination.score_per_flash = Global.score_data.flashes / (destination.flash_limit)
 		else:
 			Global.player.flash_count = -1
+			destination.score_per_flash = 0
 		
 		Global.hud.panel_enemy_count.label_text = str(destination.enemy_count)
 		

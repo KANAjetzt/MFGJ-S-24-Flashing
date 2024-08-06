@@ -8,7 +8,7 @@ signal flashed(first_time)
 @onready var ray_cast: RayCast3D = %RayCast
 
 
-func check_sight(target_position: Vector3) -> void:
+func check_sight(target_position: Vector3) -> bool:
 	ray_cast.enabled = true
 	ray_cast.target_position = to_local(target_position)
 	ray_cast.target_position -= ray_cast.position
@@ -20,3 +20,5 @@ func check_sight(target_position: Vector3) -> void:
 		flashed.emit(not is_flashed)
 		is_flashed = true
 	ray_cast.enabled = false
+	
+	return is_flashed

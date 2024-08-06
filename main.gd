@@ -59,5 +59,16 @@ func _on_player_throw(flash: Flash, origin: Vector3, force: Vector3) -> void:
 
 
 func _on_flash_flashed(flash: Flash, flashed_bodies: Array[Flashable]) -> void:
+	var flashed_bodies_count := 0
+	
 	for flashed_body in flashed_bodies:
-		flashed_body.check_sight(flash.global_position)
+		var has_been_flashed_before := flashed_body.is_flashed
+		
+		var is_flashed := flashed_body.check_sight(flash.global_position)
+		if is_flashed and not has_been_flashed_before:
+			flashed_bodies_count = flashed_bodies_count + 1
+	
+	if flashed_bodies_count > 1:
+		Global.current_arena.score_add_enemy_bonus(flashed_bodies_count)
+	
+	Global.current_arena.flashes_used += 1

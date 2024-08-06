@@ -4,9 +4,13 @@
 
 [resource]
 script = ExtResource("1_1unw1")
+is_active = false
 level_id = 2
 level_name = "Level 2"
 is_locked = false
 is_completed = false
 has_been_completed = false
 unlocks = Array[ExtResource("1_1unw1")]([])
+flash_limit = 5
+flash_limit_active = true
+level_time = 30

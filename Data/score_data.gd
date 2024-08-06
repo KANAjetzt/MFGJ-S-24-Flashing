@@ -1,11 +1,13 @@
 ## The base data for score calculations
 class_name ScoreData
-extends Node
+extends Resource
 
 
 ## Start Points for flashes
 ## amount of allowed flashes divided by this value
 @export var flashes: int = 1000
+## Bonus points for only one flash used
+@export var flashes_bonus: int = 500
 ## Points for completing  the level on the levels level_time
 @export var time: int = 500
 ## Points added per second under the level_time
