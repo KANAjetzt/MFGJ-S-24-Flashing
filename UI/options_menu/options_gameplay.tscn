@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2hndpfap7a77"]
+[gd_scene load_steps=4 format=3 uid="uid://d2hndpfap7a77"]
 
 [ext_resource type="PackedScene" uid="uid://b6rbo5rdoo18u" path="res://UI/options_menu/options_panel.tscn" id="1_p6f0n"]
 [ext_resource type="Script" path="res://UI/options_menu/options_gameplay.gd" id="2_4txxd"]
+[ext_resource type="PackedScene" uid="uid://70vhv8u5s7u8" path="res://UI/options_menu/options_check_button.tscn" id="3_xakum"]
 
 [node name="OptionsGameplay" instance=ExtResource("1_p6f0n")]
 script = ExtResource("2_4txxd")
@@ -22,4 +23,16 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
+[node name="OptionsShowGameTimer" parent="MarginContainer/Options" index="1" instance=ExtResource("3_xakum")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Show Game Timer"
+
+[node name="OptionsShowLevelTimer" parent="MarginContainer/Options" index="2" instance=ExtResource("3_xakum")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Show Level Timer"
+
 [connection signal="color_changed" from="MarginContainer/Options/OptionsCrosshairColor/CrosshairColor" to="." method="_on_crosshair_color_color_changed"]
+[connection signal="value_changed" from="MarginContainer/Options/OptionsShowGameTimer" to="." method="_on_options_show_game_timer_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Options/OptionsShowLevelTimer" to="." method="_on_options_show_level_timer_value_changed"]

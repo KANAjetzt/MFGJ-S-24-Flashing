@@ -150,7 +150,6 @@ texture = ExtResource("11_pld3a")
 expand_mode = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PauseScreen" parent="UI" instance=ExtResource("11_usd3o")]
 

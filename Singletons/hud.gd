@@ -13,7 +13,12 @@ extends CanvasLayer
 
 func _ready() -> void:
 	Global.settings.crosshair_color_changed.connect(_on_crosshair_color_changed)
+	Global.settings.show_overall_timer_changed.connect(_on_gameplay_ui_show_overall_timer)
+	Global.settings.show_level_timer_changed.connect(_on_gameplay_ui_show_level_timer)
+	
 	crosshair.modulate = Global.settings.gameplay_crosshair_color
+	panel_time_game.visible = Global.settings.gameplay_ui_show_overall_timer
+	panel_time_level.visible = Global.settings.gameplay_ui_show_level_timer
 
 
 func format_stopwatch(elapsed_time: int) -> String:
@@ -38,3 +43,17 @@ func skip_display_fade_out() -> void:
 
 func _on_crosshair_color_changed(new_color: Color) -> void:
 	crosshair.modulate = new_color
+
+
+func _on_gameplay_ui_show_overall_timer(new_value: bool) -> void:
+	if new_value:
+		panel_time_game.show()
+	else:
+		panel_time_game.hide()
+
+
+func _on_gameplay_ui_show_level_timer(new_value: bool) -> void:
+	if new_value:
+		panel_time_level.show()
+	else:
+		panel_time_level.hide()

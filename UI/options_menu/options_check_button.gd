@@ -1,13 +1,17 @@
+@tool
 class_name UIOptionsCheckButton
 extends HBoxContainer
 
 
 signal value_changed(value: bool)
 
-@export var title: String
+@export var title: String :
+	set(new_value):
+		title = new_value
+		if label_title:
+			label_title.text = new_value
 
-
-@onready var label_title: Label = %Title
+@onready var label_title: Label = %Title 
 @onready var check_button: CheckButton = %CheckButton
 
 
