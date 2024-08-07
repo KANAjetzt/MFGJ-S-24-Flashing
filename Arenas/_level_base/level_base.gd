@@ -33,8 +33,6 @@ func _on_portal_exit_hit_detected(destination: LevelData) -> void:
 func _on_enemy_flashed(is_first: bool) -> void:
 	if is_first:
 		level_data.enemies_flashed_count += 1
-		level_data.score_add_enemy()
-		
 
 
 func fade_in_level() -> void:

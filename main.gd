@@ -65,10 +65,10 @@ func _on_flash_flashed(flash: Flash, flashed_bodies: Array[Flashable]) -> void:
 		var has_been_flashed_before := flashed_body.is_flashed
 		
 		var is_flashed := flashed_body.check_sight(flash.global_position)
-		if is_flashed and not has_been_flashed_before:
+		if is_flashed and not has_been_flashed_before and flashed_body is not Player:
 			flashed_bodies_count = flashed_bodies_count + 1
 	
-	if flashed_bodies_count > 1:
-		Global.current_arena.score_add_enemy_bonus(flashed_bodies_count)
+	if flashed_bodies_count > 0:
+		Global.current_arena.score_add_enemy(flashed_bodies_count)
 	
 	Global.current_arena.flashes_used += 1

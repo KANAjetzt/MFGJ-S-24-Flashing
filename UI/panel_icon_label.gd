@@ -16,3 +16,6 @@ extends PanelContainer
 		else:
 			%Icon.texture = null
 			%Icon.custom_minimum_size = Vector2(0, 0)
+
+
+@onready var label: Label = %Label

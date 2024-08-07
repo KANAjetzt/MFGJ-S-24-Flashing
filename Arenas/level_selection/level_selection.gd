@@ -1,6 +1,11 @@
 extends LevelBase
 
 
+func _ready() -> void:
+	super()
+	Global.current_arena_index = level_data.level_id
+
+
 func _on_portal_hit_detected(destination: LevelData) -> void:
 	Global.player.is_input_disabled = true
 	Global.blend()

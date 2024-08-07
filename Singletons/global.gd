@@ -62,7 +62,10 @@ var time_game: int :
 	set(new_value):
 		time_game = new_value
 		hud.panel_time_game.label_text = hud.format_stopwatch(new_value)
-
+var score: int : 
+	set(new_value):
+		score = new_value
+		hud.panel_score.label_text = hud.format_score(score)
 
 @onready var crosshair: TextureRect = %Crosshair
 @onready var hud: UIHUD = %HUD
