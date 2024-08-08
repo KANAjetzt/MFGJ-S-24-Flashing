@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bcrtvhxgtuy4t"]
+
+[ext_resource type="Script" path="res://Arenas/_global/level_data.gd" id="1_bkebs"]
+
+[resource]
+script = ExtResource("1_bkebs")
+is_active = false
+level_id = 4
+level_name = "level_4"
+is_locked = false
+is_completed = false
+has_been_completed = false
+unlocks = Array[ExtResource("1_bkebs")]([])
+flash_limit = 5
+flash_limit_active = true
+level_time = 30

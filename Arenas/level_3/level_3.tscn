@@ -29,28 +29,28 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0877, -11.7433)
 
 [node name="Wall" parent="Structures" index="0" instance=ExtResource("2_7kdmi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.06955, 0, -12.4302)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.06955, 1.34007, -12.4302)
 wall_width = 25.0
 
 [node name="Wall2" parent="Structures" index="1" instance=ExtResource("2_7kdmi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.0598, 0, -12.4302)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.0598, 1.34007, -12.4302)
 wall_width = 25.0
 
 [node name="Wall3" parent="Structures" index="2" instance=ExtResource("2_7kdmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25.1468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34007, -25.1468)
 wall_width = 16.51
 
 [node name="Wall5" parent="Structures" index="3" instance=ExtResource("2_7kdmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.241381)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34007, 0.241381)
 wall_width = 16.51
 
 [node name="Wall4" parent="Structures" index="4" instance=ExtResource("2_7kdmi")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.92421, -11.1559)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.92421, -12.4287)
 wall_width = 20.0
 wall_height = 20.0
 
 [node name="Wall6" parent="Structures" index="5" instance=ExtResource("2_7kdmi")]
-transform = Transform3D(-4.0705e-08, -0.364454, -0.931221, -1.59308e-08, 0.931221, -0.364454, 1, 0, -4.37114e-08, -12.3403, 7.8931, -9.70117)
+transform = Transform3D(-4.0705e-08, -0.364454, -0.931221, -1.59308e-08, 0.931221, -0.364454, 1, 0, -4.37114e-08, -13.0961, 9.84599, -9.70117)
 wall_width = 3.0
 wall_height = 3.0
 
@@ -67,15 +67,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65762, 0, -20.0209)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65762, 0, -6.3682)
 
 [node name="WallPlayerArea" parent="PlayerArea" index="0" instance=ExtResource("5_lxtop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0787, -2.35202)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0787, -2.26105)
 wall_width = 20.0
 
 [node name="WallPlayerArea2" parent="PlayerArea" index="1" instance=ExtResource("5_lxtop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0787, -22.6663)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0787, -22.6013)
 wall_width = 20.0
 
 [node name="WallPlayerArea3" parent="PlayerArea" index="2" instance=ExtResource("5_lxtop")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.1705, 10.0787, -12.5062)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.1705, 10.0787, -12.4282)
 wall_width = 20.0
 
 [node name="WallPlayerArea4" parent="PlayerArea" index="3" instance=ExtResource("5_lxtop")]

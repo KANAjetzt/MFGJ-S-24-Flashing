@@ -55,6 +55,7 @@ _data = {
 [node name="WallPlayerArea" type="StaticBody3D"]
 collision_layer = 32
 script = ExtResource("1_h1252")
+use_particles = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true

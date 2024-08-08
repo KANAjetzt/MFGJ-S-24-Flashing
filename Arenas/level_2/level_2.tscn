@@ -29,7 +29,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.780
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.7188, 0)
 
 [node name="Wall" parent="Structures" index="0" instance=ExtResource("3_ts51b")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.5563, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.5563, -1.35506)
 wall_width = 20.0
 wall_height = 5.0
 
@@ -37,27 +37,27 @@ wall_height = 5.0
 wall_width = 20.0
 
 [node name="Wall3" parent="Structures" index="2" instance=ExtResource("3_ts51b")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.1885, 0, -9.84434)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.1885, 1.37751, -9.84434)
 wall_width = 20.0
 
 [node name="Wall4" parent="Structures" index="3" instance=ExtResource("3_ts51b")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.1838, 0, -9.84434)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.1838, 1.37751, -9.84434)
 wall_width = 20.0
 
 [node name="Wall5" parent="Structures" index="4" instance=ExtResource("3_ts51b")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00204849, 0, -19.8165)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00204849, 1.37751, -19.8165)
 wall_width = 20.0
 
 [node name="Wall6" parent="Structures" index="5" instance=ExtResource("3_ts51b")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00748444, 0, -27.685)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00748444, 1.37751, -27.685)
 wall_width = 20.0
 
 [node name="Wall7" parent="Structures" index="6" instance=ExtResource("3_ts51b")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1816, 0, -23.8649)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1816, 1.37751, -23.8649)
 wall_width = 8.0
 
 [node name="Wall8" parent="Structures" index="7" instance=ExtResource("3_ts51b")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.1696, 0, -23.8649)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.1696, 1.37751, -23.8649)
 wall_width = 8.0
 
 [node name="Enemy" parent="Enemies" index="0" instance=ExtResource("4_tr0xa")]
