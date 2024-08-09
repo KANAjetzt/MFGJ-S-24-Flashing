@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cepu2lxamrwfc" path="res://Arenas/_global/player_area/wall_player_area.tscn" id="3_f5qbc"]
 [ext_resource type="PackedScene" uid="uid://bcmun1x0uu6lq" path="res://Flashable/Enemy/Enemy.tscn" id="3_knfpo"]
 
-[node name="LevelBase" instance=ExtResource("1_v5t63")]
+[node name="Level4" instance=ExtResource("1_v5t63")]
 level_data = ExtResource("2_mht1n")
 
 [node name="Portal Exit" parent="." index="0"]

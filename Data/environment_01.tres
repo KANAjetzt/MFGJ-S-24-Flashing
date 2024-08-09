@@ -1,0 +1,37 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://bbxlu0ysqs0it"]
+
+[ext_resource type="Shader" path="res://materials/_shaders/sky-sokpop.gdshader" id="1_6eoih"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awita"]
+shader = ExtResource("1_6eoih")
+shader_parameter/color_top = Color(0.12615, 2.57139e-05, 0.143884, 1)
+shader_parameter/color_horizon = Color(0.269251, 0.0834162, 0.0241535, 1)
+shader_parameter/color_bottom = Color(0.359853, 0.0325167, 0.113319, 1)
+shader_parameter/exponent_factor_top = 1.0
+shader_parameter/exponent_factor_bottom = 1.0
+shader_parameter/intensity_amp = 1.0
+
+[sub_resource type="Sky" id="Sky_va1lq"]
+sky_material = SubResource("ShaderMaterial_awita")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_va1lq")
+tonemap_mode = 2
+tonemap_exposure = 0.8
+tonemap_white = 1.5
+glow_enabled = true
+glow_bloom = 0.1
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.201286, 0.000853912, 0.0660081, 1)
+fog_light_energy = 0.45
+fog_density = 1.0
+fog_aerial_perspective = 0.8
+fog_sky_affect = 0.5
+fog_height = 0.5
+fog_height_density = 0.1
+fog_depth_curve = 1.75
+fog_depth_begin = 1.0
+fog_depth_end = 50.0
