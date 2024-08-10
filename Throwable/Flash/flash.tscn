@@ -1,14 +1,20 @@
-[gd_scene load_steps=18 format=3 uid="uid://ixqo8lbxbvq7"]
+[gd_scene load_steps=26 format=3 uid="uid://ixqo8lbxbvq7"]
 
 [ext_resource type="Script" path="res://Throwable/Flash/flash.gd" id="1_43v0a"]
 [ext_resource type="PackedScene" uid="uid://dwhrytort1jfy" path="res://Throwable/Flash/Flash.glb" id="2_0ioba"]
-[ext_resource type="AudioStream" uid="uid://b5win83rj6m55" path="res://Throwable/Flash/flash_0.ogg" id="2_xcy2m"]
+[ext_resource type="AudioStream" uid="uid://c27pjq76d2sqd" path="res://sounds/SFX/flash_1.ogg" id="3_x8x2f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r7wrd"]
 bounce = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pvw16"]
 radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p87a2"]
+albedo_color = Color(0.290081, 0.475556, 0.723645, 1)
+emission_enabled = true
+emission = Color(0.466753, 0.759703, 1, 1)
+emission_energy_multiplier = 2.33
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_phupj"]
 radius = 20.0
@@ -67,6 +73,48 @@ height = 0.02
 radial_segments = 4
 rings = 1
 
+[sub_resource type="Curve" id="Curve_i2hbj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.760101, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sikij"]
+curve = SubResource("Curve_i2hbj")
+
+[sub_resource type="Curve" id="Curve_kt0fa"]
+_data = [Vector2(0, 0.327369), 0.0, 0.0, 0, 0, Vector2(0.479798, 1), 0.0, 0.0, 0, 0, Vector2(0.84596, 0.779981), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ymbg6"]
+curve = SubResource("Curve_kt0fa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pkslh"]
+emission_shape_offset = Vector3(0, -0.1, 0)
+emission_shape_scale = Vector3(0.12, 0.12, 0.12)
+emission_shape = 1
+emission_sphere_radius = 1.0
+orbit_velocity_min = -0.444
+orbit_velocity_max = 0.13
+gravity = Vector3(0, 3, 0)
+radial_accel_min = -1.39
+radial_accel_max = 0.929998
+scale_curve = SubResource("CurveTexture_ymbg6")
+alpha_curve = SubResource("CurveTexture_sikij")
+hue_variation_min = -0.13
+hue_variation_max = 0.08
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cigm1"]
+blend_mode = 1
+diffuse_mode = 3
+specular_mode = 1
+emission_enabled = true
+emission = Color(0.205, 0.425, 1.568, 1)
+emission_energy_multiplier = 8.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_ikqmt"]
+material = SubResource("StandardMaterial3D_cigm1")
+size = Vector3(0.01, 0.01, 0.01)
+
 [node name="Flash" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 10
@@ -84,6 +132,9 @@ shape = SubResource("SphereShape3D_pvw16")
 [node name="Shell" parent="." instance=ExtResource("2_0ioba")]
 unique_name_in_owner = true
 transform = Transform3D(0.47, 0, 0, 0, 0.47, 0, 0, 0, 0.47, 0, 0, 0)
+
+[node name="Cube" parent="Shell" index="0"]
+material_override = SubResource("StandardMaterial3D_p87a2")
 
 [node name="FlashRadius" type="Area3D" parent="."]
 unique_name_in_owner = true
@@ -107,7 +158,7 @@ one_shot = true
 
 [node name="SFX" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("2_xcy2m")
+stream = ExtResource("3_x8x2f")
 bus = &"SoundFX"
 
 [node name="ParticlesExplosion" type="GPUParticles3D" parent="."]
@@ -130,5 +181,15 @@ light_size = 0.5
 shadow_enabled = true
 omni_range = 100.0
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 24
+lifetime = 0.8
+explosiveness = 0.1
+randomness = 0.2
+process_material = SubResource("ParticleProcessMaterial_pkslh")
+draw_pass_1 = SubResource("BoxMesh_ikqmt")
+
 [connection signal="body_entered" from="FlashRadius" to="." method="_on_flash_radius_body_entered"]
 [connection signal="timeout" from="TimerDetonate" to="." method="_on_timer_detonate_timeout"]
+
+[editable path="Shell"]

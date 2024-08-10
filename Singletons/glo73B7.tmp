@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://du6620k06agnp"]
+[gd_scene load_steps=31 format=3 uid="uid://du6620k06agnp"]
 
 [ext_resource type="Script" path="res://Singletons/global.gd" id="1_hifrn"]
 [ext_resource type="Script" path="res://Arenas/_global/level_data.gd" id="2_d3kab"]
@@ -15,12 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://d0rmgk63dqys7" path="res://UI/score_display.tscn" id="11_8ocp2"]
 [ext_resource type="Texture2D" uid="uid://coqj2fcsaxvcn" path="res://addons/controller_icons/assets/key/space.png" id="11_pld3a"]
 [ext_resource type="PackedScene" uid="uid://cqxxp1dbyt03d" path="res://UI/pause_screen/pause_screen.tscn" id="11_usd3o"]
-[ext_resource type="Texture2D" uid="uid://box0kw7ggp5x3" path="res://Throwable/Flash/flash.svg" id="13_uout0"]
 [ext_resource type="Texture2D" uid="uid://cmxb7alntd8gk" path="res://Flashable/Enemy/Enemy.svg" id="14_5udkt"]
 [ext_resource type="Script" path="res://Singletons/audio_manager.gd" id="16_bcx1p"]
 [ext_resource type="AudioStream" uid="uid://dlljswqjs0qsb" path="res://sounds/ambience/ambience_0.ogg" id="17_xrmmo"]
 [ext_resource type="AudioStream" uid="uid://dlm512wr7ni3m" path="res://sounds/ambience/ambience_1.ogg" id="18_qujhh"]
-[ext_resource type="Shader" path="res://materials/_shaders/glitch.gdshader" id="18_w3npk"]
 [ext_resource type="AudioStream" uid="uid://ciefgmqwl0wtn" path="res://sounds/ambience/ambience_drone_0.ogg" id="19_8ur0s"]
 [ext_resource type="AudioStream" uid="uid://ci48ae543k26v" path="res://sounds/ambience/ambience_metallic_stretched_0.ogg" id="20_6k0tx"]
 [ext_resource type="AudioStream" uid="uid://6n8l8rypao1b" path="res://sounds/ambience/ambience_texture_0.ogg" id="21_65k5g"]
@@ -45,15 +43,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_rumwn")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6jme8"]
-shader = ExtResource("18_w3npk")
-shader_parameter/_shake_enable = false
-shader_parameter/shake_power = 0.03
-shader_parameter/shake_rate = 0.2
-shader_parameter/shake_speed = 5.0
-shader_parameter/shake_block_size = 30.5
-shader_parameter/shake_color_rate = 0.01
 
 [sub_resource type="Animation" id="Animation_kdod3"]
 length = 0.001
@@ -104,6 +93,17 @@ visible = false
 
 [node name="PauseScreen" parent="UI" instance=ExtResource("11_usd3o")]
 
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="Blend" type="ColorRect" parent="Overlay"]
+modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_mx27g")
@@ -130,7 +130,7 @@ theme_override_constants/margin_bottom = 25
 unique_name_in_owner = true
 layout_mode = 2
 label_text = "5x"
-icon_texture = ExtResource("13_uout0")
+icon_texture = ExtResource("8_f0ed8")
 icon_modulate = Color(0, 0, 0, 1)
 
 [node name="PanelEnemyCount" parent="HUD/AspectRatioContainer/MarginContainer" instance=ExtResource("8_kcrgv")]
@@ -214,26 +214,6 @@ offset_left = 1.0
 offset_top = -348.0
 offset_right = 1207.0
 color = Color(0, 0, 0, 1)
-
-[node name="Overlay" type="CanvasLayer" parent="."]
-
-[node name="Blend" type="ColorRect" parent="Overlay"]
-modulate = Color(0, 0, 0, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Glitch" type="ColorRect" parent="Overlay"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_6jme8")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

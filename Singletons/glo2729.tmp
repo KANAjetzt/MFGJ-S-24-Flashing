@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://du6620k06agnp"]
+[gd_scene load_steps=27 format=3 uid="uid://du6620k06agnp"]
 
 [ext_resource type="Script" path="res://Singletons/global.gd" id="1_hifrn"]
 [ext_resource type="Script" path="res://Arenas/_global/level_data.gd" id="2_d3kab"]
@@ -15,27 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://d0rmgk63dqys7" path="res://UI/score_display.tscn" id="11_8ocp2"]
 [ext_resource type="Texture2D" uid="uid://coqj2fcsaxvcn" path="res://addons/controller_icons/assets/key/space.png" id="11_pld3a"]
 [ext_resource type="PackedScene" uid="uid://cqxxp1dbyt03d" path="res://UI/pause_screen/pause_screen.tscn" id="11_usd3o"]
-[ext_resource type="Texture2D" uid="uid://box0kw7ggp5x3" path="res://Throwable/Flash/flash.svg" id="13_uout0"]
-[ext_resource type="Texture2D" uid="uid://cmxb7alntd8gk" path="res://Flashable/Enemy/Enemy.svg" id="14_5udkt"]
 [ext_resource type="Script" path="res://Singletons/audio_manager.gd" id="16_bcx1p"]
 [ext_resource type="AudioStream" uid="uid://dlljswqjs0qsb" path="res://sounds/ambience/ambience_0.ogg" id="17_xrmmo"]
 [ext_resource type="AudioStream" uid="uid://dlm512wr7ni3m" path="res://sounds/ambience/ambience_1.ogg" id="18_qujhh"]
-[ext_resource type="Shader" path="res://materials/_shaders/glitch.gdshader" id="18_w3npk"]
 [ext_resource type="AudioStream" uid="uid://ciefgmqwl0wtn" path="res://sounds/ambience/ambience_drone_0.ogg" id="19_8ur0s"]
 [ext_resource type="AudioStream" uid="uid://ci48ae543k26v" path="res://sounds/ambience/ambience_metallic_stretched_0.ogg" id="20_6k0tx"]
 [ext_resource type="AudioStream" uid="uid://6n8l8rypao1b" path="res://sounds/ambience/ambience_texture_0.ogg" id="21_65k5g"]
-[ext_resource type="AudioStream" uid="uid://bkfdx6nlb8xvd" path="res://sounds/ambience/ambience_texture_1.ogg" id="22_3rjds"]
-
-[sub_resource type="Gradient" id="Gradient_t2f7s"]
-offsets = PackedFloat32Array(0.11165, 0.553398)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkca2"]
-gradient = SubResource("Gradient_t2f7s")
-width = 524
-height = 524
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_rumwn"]
 offsets = PackedFloat32Array(0, 0.0558252, 0.0606796)
@@ -45,15 +30,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_rumwn")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6jme8"]
-shader = ExtResource("18_w3npk")
-shader_parameter/_shake_enable = false
-shader_parameter/shake_power = 0.03
-shader_parameter/shake_rate = 0.2
-shader_parameter/shake_speed = 5.0
-shader_parameter/shake_block_size = 30.5
-shader_parameter/shake_color_rate = 0.01
 
 [sub_resource type="Animation" id="Animation_kdod3"]
 length = 0.001
@@ -104,10 +80,20 @@ visible = false
 
 [node name="PauseScreen" parent="UI" instance=ExtResource("11_usd3o")]
 
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="Blend" type="ColorRect" parent="Overlay"]
+modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_mx27g")
-hud_color = Color(0.0242128, 0.608158, 0.736127, 1)
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="HUD"]
 anchors_preset = 15
@@ -115,12 +101,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 ratio = 1.7778
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD/AspectRatioContainer"]
 layout_mode = 2
-mouse_filter = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
@@ -130,16 +114,14 @@ theme_override_constants/margin_bottom = 25
 unique_name_in_owner = true
 layout_mode = 2
 label_text = "5x"
-icon_texture = ExtResource("13_uout0")
-icon_modulate = Color(0, 0, 0, 1)
+icon_texture = ExtResource("8_f0ed8")
 
 [node name="PanelEnemyCount" parent="HUD/AspectRatioContainer/MarginContainer" instance=ExtResource("8_kcrgv")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 label_text = "4"
-icon_texture = ExtResource("14_5udkt")
-icon_modulate = Color(0, 0, 0, 1)
+icon_texture = ExtResource("8_f0ed8")
 
 [node name="PanelContainer" type="PanelContainer" parent="HUD/AspectRatioContainer/MarginContainer"]
 layout_mode = 2
@@ -156,7 +138,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 label_text = "00 : 00 : 00"
 icon_texture = ExtResource("8_f0ed8")
-icon_modulate = Color(0, 0, 0, 1)
 
 [node name="PanelTimeGame" parent="HUD/AspectRatioContainer/MarginContainer/PanelContainer/HBoxContainer" instance=ExtResource("8_kcrgv")]
 unique_name_in_owner = true
@@ -164,7 +145,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 label_text = "00 : 00 : 00"
 icon_texture = ExtResource("8_f0ed8")
-icon_modulate = Color(0, 0, 0, 1)
 
 [node name="PanelScore" parent="HUD/AspectRatioContainer/MarginContainer" instance=ExtResource("8_kcrgv")]
 unique_name_in_owner = true
@@ -172,8 +152,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 label_text = "1.275"
-icon_texture = SubResource("GradientTexture2D_rkca2")
-icon_modulate = Color(0, 0, 0, 1)
+icon_texture = ExtResource("8_f0ed8")
 
 [node name="Skip" type="HBoxContainer" parent="HUD/AspectRatioContainer/MarginContainer"]
 unique_name_in_owner = true
@@ -205,7 +184,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 texture = SubResource("GradientTexture2D_5q0xd")
 stretch_mode = 3
 
@@ -215,26 +193,6 @@ offset_top = -348.0
 offset_right = 1207.0
 color = Color(0, 0, 0, 1)
 
-[node name="Overlay" type="CanvasLayer" parent="."]
-
-[node name="Blend" type="ColorRect" parent="Overlay"]
-modulate = Color(0, 0, 0, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Glitch" type="ColorRect" parent="Overlay"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_6jme8")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
@@ -242,7 +200,6 @@ libraries = {
 }
 
 [node name="AudioManager" type="Node" parent="."]
-unique_name_in_owner = true
 script = ExtResource("16_bcx1p")
 
 [node name="Ambience" type="Node" parent="AudioManager"]
@@ -252,13 +209,11 @@ unique_name_in_owner = true
 
 [node name="ambience_layer_0" type="AudioStreamPlayer" parent="AudioManager/Ambience/Fixed"]
 stream = ExtResource("17_xrmmo")
-volume_db = -4.0
 autoplay = true
 bus = &"Music"
 
 [node name="ambience_layer_1" type="AudioStreamPlayer" parent="AudioManager/Ambience/Fixed"]
 stream = ExtResource("18_qujhh")
-volume_db = -2.0
 autoplay = true
 bus = &"Music"
 
@@ -267,21 +222,14 @@ stream = ExtResource("19_8ur0s")
 autoplay = true
 bus = &"Music"
 
-[node name="ambience_layer_3" type="AudioStreamPlayer" parent="AudioManager/Ambience/Fixed"]
-stream = ExtResource("20_6k0tx")
-autoplay = true
-bus = &"Music"
-
 [node name="Variable" type="Node" parent="AudioManager/Ambience"]
+
+[node name="ambience_layer_3" type="AudioStreamPlayer" parent="AudioManager/Ambience/Variable"]
+stream = ExtResource("20_6k0tx")
+bus = &"Music"
 
 [node name="ambience_layer_4" type="AudioStreamPlayer" parent="AudioManager/Ambience/Variable"]
 stream = ExtResource("21_65k5g")
-volume_db = -3.0
-bus = &"Music"
-
-[node name="ambience_layer_5" type="AudioStreamPlayer" parent="AudioManager/Ambience/Variable"]
-stream = ExtResource("22_3rjds")
-volume_db = -3.0
 bus = &"Music"
 
 [node name="TimerChangeAmbience" type="Timer" parent="AudioManager/Ambience"]
@@ -290,13 +238,4 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="TimerChangeAmbienceFixed" type="Timer" parent="AudioManager/Ambience"]
-unique_name_in_owner = true
-one_shot = true
-autostart = true
-
-[node name="SFX" type="Node" parent="AudioManager"]
-unique_name_in_owner = true
-
 [connection signal="timeout" from="AudioManager/Ambience/TimerChangeAmbience" to="AudioManager" method="_on_timer_change_ambience_timeout"]
-[connection signal="timeout" from="AudioManager/Ambience/TimerChangeAmbienceFixed" to="AudioManager" method="_on_timer_change_ambience_fixed_timeout"]

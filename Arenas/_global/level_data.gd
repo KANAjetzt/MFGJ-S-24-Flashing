@@ -28,6 +28,8 @@ signal level_completed
 			handle_unlocks()
 			level_completed.emit()
 			print("LevelData: Level Completed!")
+			Global.audio_manager.play_global_sfx(level_complete_sfx, 18.0, 0.3)
+			Global.activate_gltich()
 			
 			if flashes_used <= 1:
 				score_flashes_bonus = Global.score_data.flashes_bonus
@@ -51,6 +53,7 @@ signal level_completed
 ## 10 Points for each second unter that
 ## -10 Points for each second above that
 @export var level_time: int
+@export var level_complete_sfx: AudioStream = preload("res://sounds/SFX/finish_0.ogg")
 
 ## Reference of the instanced level
 var ref: LevelBase

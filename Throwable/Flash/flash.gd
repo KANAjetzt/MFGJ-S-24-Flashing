@@ -24,6 +24,7 @@ func _on_timer_detonate_timeout() -> void:
 	var overlap := flash_radius.get_overlapping_bodies()
 	await get_tree().create_timer(0.1).timeout
 	flash_radius.monitoring = false
+	sfx.pitch_scale = randf_range(0.85, 1.25)
 	sfx.play()
 	particles_explosion.emitting = true
 	flashed.emit(self, bodies_in_range)

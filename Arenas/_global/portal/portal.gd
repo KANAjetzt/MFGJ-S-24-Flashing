@@ -5,9 +5,11 @@ extends StaticBody3D
 signal hit_detected(destination: LevelData)
 
 @export var destination: LevelData
+@export var port_sound: AudioStream
 
 @onready var hit_detector: Area3D = %HitDetector
 @onready var label_level_name: Label3D = %LabelLevelName
+@onready var sfx_porting: AudioStreamPlayer3D = %SFXPorting
 
 
 func _ready() -> void:
@@ -17,6 +19,8 @@ func _ready() -> void:
 
 func _on_hit_detector_body_entered(body: Node3D) -> void:
 	if not destination.is_locked:
+		
+		Global.audio_manager.play_global_sfx(port_sound, 0.0)
 		
 		# Update the current arena index
 		Global.current_arena_index = destination.level_id

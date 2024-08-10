@@ -2,6 +2,8 @@ class_name UIHUD
 extends CanvasLayer
 
 
+@export var hud_color: Color
+
 @onready var panel_flash_count: UIPanelIconLabel = %PanelFlashCount
 @onready var panel_enemy_count: UIPanelIconLabel = %PanelEnemyCount
 @onready var panel_time_level: UIPanelIconLabel = %PanelTimeLevel
@@ -21,8 +23,14 @@ func _ready() -> void:
 	crosshair.modulate = Global.settings.gameplay_crosshair_color
 	panel_time_game.visible = Global.settings.gameplay_ui_show_overall_timer
 	panel_time_level.visible = Global.settings.gameplay_ui_show_level_timer
-	panel_score.label_text = ""
-
+	panel_score.label_text = str(0)
+	panel_flash_count.label_text = "unlimited"
+	
+	%PanelFlashCount.icon_modulate = hud_color
+	%PanelEnemyCount.icon_modulate = hud_color
+	%PanelTimeLevel.icon_modulate = hud_color
+	%PanelTimeGame.icon_modulate = hud_color
+	%PanelScore.icon_modulate = hud_color
 
 func format_stopwatch(elapsed_time: int) -> String:
 	var total_seconds = elapsed_time / 1000

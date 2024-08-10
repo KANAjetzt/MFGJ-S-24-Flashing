@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcmun1x0uu6lq"]
+[gd_scene load_steps=7 format=3 uid="uid://bcmun1x0uu6lq"]
 
 [ext_resource type="PackedScene" uid="uid://bapx4os5br1xe" path="res://Flashable/flashable.tscn" id="1_fgl0m"]
 [ext_resource type="Script" path="res://Flashable/Enemy/enemy.gd" id="2_xiujf"]
 [ext_resource type="Material" uid="uid://bwjvggncy0rdb" path="res://Flashable/Enemy/enemy_xray.tres" id="3_nvfbr"]
+[ext_resource type="AudioStream" uid="uid://dfk2a5fx7a3qm" path="res://Flashable/Enemy/enemy_0.ogg" id="4_8e4s2"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_mpmaq"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -190,3 +191,7 @@ mesh = SubResource("PrismMesh_mpmaq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/BodyPart12" index="1"]
 shape = SubResource("ConvexPolygonShape3D_ljoly")
+
+[node name="SFXDying" type="AudioStreamPlayer3D" parent="." index="4"]
+unique_name_in_owner = true
+stream = ExtResource("4_8e4s2")

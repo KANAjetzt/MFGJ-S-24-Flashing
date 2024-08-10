@@ -16,6 +16,10 @@ extends PanelContainer
 		else:
 			%Icon.texture = null
 			%Icon.custom_minimum_size = Vector2(0, 0)
-
+@export var icon_modulate: Color :
+	set(new_value):
+		icon_modulate = new_value
+		if icon_texture:
+			%Icon.modulate = new_value
 
 @onready var label: Label = %Label

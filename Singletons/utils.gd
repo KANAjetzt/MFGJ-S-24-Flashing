@@ -13,3 +13,8 @@ func toggle_mouse_lock() -> void:
 func free_all_children(parent: Node) -> void:
 	for child in parent.get_children():
 		child.queue_free()
+
+
+## Used to tween shader uniforms
+func tween_shader_prop(value: float, material: ShaderMaterial, prop_name: String) -> void:
+	material.set_shader_parameter(prop_name, value)
