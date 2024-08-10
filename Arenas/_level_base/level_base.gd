@@ -27,6 +27,7 @@ func _ready() -> void:
 
 
 func _on_portal_exit_hit_detected(destination: LevelData) -> void:
+	Global.player.deactivate_particles()
 	Global.player.teleport(destination.start_transform)
 
 

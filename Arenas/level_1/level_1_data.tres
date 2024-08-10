@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://dft6uepgtlhof"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://dft6uepgtlhof"]
 
+[ext_resource type="AudioStream" uid="uid://bct2f5u0fhcqa" path="res://sounds/SFX/finish_0.ogg" id="1_3mupd"]
 [ext_resource type="Script" path="res://Arenas/_global/level_data.gd" id="1_q0iq0"]
 [ext_resource type="Resource" uid="uid://d1vcprfux03fg" path="res://Arenas/level_2/level_2_data.tres" id="2_au1nb"]
 
@@ -15,3 +16,4 @@ unlocks = Array[ExtResource("1_q0iq0")]([ExtResource("2_au1nb")])
 flash_limit = 2
 flash_limit_active = true
 level_time = 10
+level_complete_sfx = ExtResource("1_3mupd")

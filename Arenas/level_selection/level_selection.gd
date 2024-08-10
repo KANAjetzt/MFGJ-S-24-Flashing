@@ -11,5 +11,6 @@ func _on_portal_hit_detected(destination: LevelData) -> void:
 	Global.blend()
 	await get_tree().create_timer(0.1).timeout
 	Global.player.teleport(destination.start_transform)
+	Global.player.activate_particles()
 	await get_tree().create_timer(0.1).timeout
 	destination.ref.activate_camera()

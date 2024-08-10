@@ -19,6 +19,10 @@ const MOUSE_SENSITIVITY = 0.25
 @onready var hand: Node3D = %Hand
 @onready var flash_dummy: Flash = %FlashDummy
 @onready var camera: PhantomCamera3D = %Camera
+@onready var gpu_particles_3d: GPUParticles3D = %GPUParticles3D
+@onready var gpu_particles_3d_2: GPUParticles3D = %GPUParticles3D2
+
+
 
 var can_throw := true :
 	set(new_value):
@@ -139,7 +143,18 @@ func teleport(transfrom: Transform3D) -> void:
 
 
 func activate_camera() -> void:
+	deactivate_particles()
 	Global.active_camera = camera
+
+
+func activate_particles() -> void:
+	gpu_particles_3d.emitting = true
+	gpu_particles_3d_2.emitting = true
+
+
+func deactivate_particles() -> void:
+	gpu_particles_3d.emitting = false
+	gpu_particles_3d_2.emitting = false
 
 
 func _on_camera_tween_completed() -> void:
