@@ -28,10 +28,7 @@ func _ready() -> void:
 	else:
 		level_selection.activate_camera()
 
-	for node in levels.get_children():
-		var level: LevelBase = node
-		level.level_data.main_transform = level.global_transform
-		levels.remove_child(level)
+	remove_levels()
 
 
 func _input(event: InputEvent) -> void:
@@ -43,6 +40,13 @@ func _input(event: InputEvent) -> void:
 
 	if Global.camera_is_tweening and event.is_action_pressed("skip"):
 		Global.player.activate_camera()
+
+
+func remove_levels() -> void:
+	for node in levels.get_children():
+		var level: LevelBase = node
+		level.level_data.main_transform = level.global_transform
+		levels.remove_child(level)
 
 
 func _on_player_throw_before(flash: Flash, origin: Vector3, force: Vector3) -> void:

@@ -3,6 +3,7 @@ extends Resource
 
 signal level_completed
 
+
 ## True if currently the active level
 @export var is_active := false :
 	set(new_value):
@@ -30,6 +31,7 @@ signal level_completed
 			print("LevelData: Level Completed!")
 			Global.audio_manager.play_global_sfx(level_complete_sfx, 18.0, 0.3)
 			Global.activate_gltich()
+			Global.level_completed_count = Global.level_completed_count + 1
 			
 			if flashes_used <= 1:
 				score_flashes_bonus = Global.score_data.flashes_bonus
@@ -169,3 +171,22 @@ func score_time_calc() -> void:
 
 func score_get_all() -> int:
 	return score_flashes_used + score_enemy + score_time
+
+
+func reset() -> void:
+	enemies_flashed_count = 0
+	flashes_used = 0
+	is_locked = false
+	is_completed = false
+	level_current_time = 0
+	level_score = 0
+	score_enemy = 0
+	score_enemy_bonus = 0
+	score_flashes_bonus = 0
+	score_flashes_used = 0
+	score_per_flash = 0
+	level_time = 0
+	score_time = 0
+	score_time_bonus = 0
+	score_time_reduction = 0
+	ref.queue_free()

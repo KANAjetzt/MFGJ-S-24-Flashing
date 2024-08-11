@@ -2,7 +2,9 @@ extends Node
 
 
 signal world_ready
+signal game_won(first: bool)
 
+@export var arena_scenes: Array[PackedScene]
 @export var arenas: Array[LevelData]
 @export var settings: SettingsData
 @export var score_data: ScoreData
@@ -58,6 +60,8 @@ var time_level: int :
 		time_level = new_value
 		hud.panel_time_level.label_text = hud.format_stopwatch(new_value)
 		current_arena.level_current_time = new_value
+var time_engine: int
+var time_game_start: int
 var time_game: int :
 	set(new_value):
 		time_game = new_value
@@ -66,6 +70,14 @@ var score: int :
 	set(new_value):
 		score = new_value
 		hud.panel_score.label_text = hud.format_score(score)
+var level_completed_count := 0 :
+	set(new_value):
+		level_completed_count = new_value
+		if level_completed_count == arenas.size() - 1:
+			game_won.emit(not is_game_won)
+			is_game_won = true
+var is_game_won := false
+
 
 @onready var crosshair: TextureRect = %Crosshair
 @onready var hud: UIHUD = %HUD
@@ -81,8 +93,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	time_game = Time.get_ticks_msec()
-
+	time_engine = Time.get_ticks_msec()
+	
+	if time_game_start:
+		time_game = time_engine - time_game_start
+	
 	if time_level_start:
 		time_level = time_game - time_level_start
 
@@ -100,8 +115,18 @@ func _on_camera_tween_completed() -> void:
 	hud.skip_display_fade_out()
 
 
-func add_flash_score(enemies_flashed: int) -> void:
-	pass
+func reset_game() -> void:
+	level_completed_count = 0
+	
+	for arena in arenas:
+		if arena.level_id > 0:
+			arena.reset()
+	
+	for arena_scene in arena_scenes:
+		level_container.add_child(arena_scene.instantiate())
+	
+	for arena_node in level_container.get_children():
+		level_container.remove_child(arena_node)
 
 
 func activate_gltich(time := 0.2) -> void:

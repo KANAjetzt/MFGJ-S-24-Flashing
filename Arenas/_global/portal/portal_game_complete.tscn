@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5mgd1vj5byo4"]
+
+[ext_resource type="PackedScene" uid="uid://cjb2dteos4g55" path="res://Arenas/_global/portal/portal.tscn" id="1_8nuu5"]
+[ext_resource type="Script" path="res://Arenas/_global/portal/portal_game_complete.gd" id="2_ychg4"]
+[ext_resource type="Resource" uid="uid://b2sxtsx2im1mt" path="res://Arenas/level_selection/level_selection_data.tres" id="3_bk5qm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr0qo"]
+albedo_color = Color(0, 0.436828, 0.295229, 1)
+emission_enabled = true
+emission = Color(0, 0.653586, 0.397483, 1)
+
+[node name="Portal" instance=ExtResource("1_8nuu5")]
+script = ExtResource("2_ychg4")
+label_level_name_override = "New Game"
+destination = ExtResource("3_bk5qm")
+
+[node name="LabelLevelName" parent="." index="0"]
+text = "New Game"
+
+[node name="GPUParticles3D" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_kr0qo")

@@ -6,15 +6,36 @@ signal hit_detected(destination: LevelData)
 
 @export var destination: LevelData
 @export var port_sound: AudioStream
+@export var deactivated := false :
+	set(new_value):
+		deactivated = new_value
+		if get_node_or_null("%GPUParticles3D") and get_node_or_null("%CollisionShape3D"):
+			if deactivated:
+				%GPUParticles3D.emitting = false
+				%CollisionShape3D.disabled = true
+				%HitDetector.monitoring = false
+				hide()
+			else:
+				%GPUParticles3D.emitting = true
+				%CollisionShape3D.disabled = false
+				%HitDetector.monitoring = true
+				show()
 
 @onready var hit_detector: Area3D = %HitDetector
 @onready var label_level_name: Label3D = %LabelLevelName
 @onready var sfx_porting: AudioStreamPlayer3D = %SFXPorting
+@onready var gpu_particles_3d: GPUParticles3D = %GPUParticles3D
+@onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
 
 
 func _ready() -> void:
 	label_level_name.text = destination.level_name
 	destination.level_completed.connect(_on_level_completed)
+	
+	if deactivated:
+		gpu_particles_3d.emitting = false
+		collision_shape_3d.disabled = true
+		hide()
 
 
 func _on_hit_detector_body_entered(body: Node3D) -> void:

@@ -1,14 +1,17 @@
-[gd_scene load_steps=34 format=3 uid="uid://du6620k06agnp"]
+[gd_scene load_steps=39 format=3 uid="uid://du6620k06agnp"]
 
 [ext_resource type="Script" path="res://Singletons/global.gd" id="1_hifrn"]
 [ext_resource type="Script" path="res://Arenas/_global/level_data.gd" id="2_d3kab"]
 [ext_resource type="Resource" uid="uid://b2sxtsx2im1mt" path="res://Arenas/level_selection/level_selection_data.tres" id="3_1bx6c"]
+[ext_resource type="PackedScene" uid="uid://dgkfibdgbd0un" path="res://Arenas/level_1/level_1.tscn" id="3_4p6e3"]
 [ext_resource type="Resource" uid="uid://dft6uepgtlhof" path="res://Arenas/level_1/level_1_data.tres" id="4_l654u"]
+[ext_resource type="PackedScene" uid="uid://cnhj4xqk1w07l" path="res://Arenas/level_2/level_2.tscn" id="4_si5n6"]
 [ext_resource type="Resource" uid="uid://d1vcprfux03fg" path="res://Arenas/level_2/level_2_data.tres" id="5_jx7rb"]
+[ext_resource type="PackedScene" uid="uid://cvt1aabx5tqug" path="res://Arenas/level_3/level_3.tscn" id="5_qfp3i"]
+[ext_resource type="PackedScene" uid="uid://b6n773h2cp8y2" path="res://Arenas/level_4/level_4.tscn" id="6_j4ud1"]
 [ext_resource type="Resource" uid="uid://4gxf0wf3n72b" path="res://Arenas/level_3/level_3_data.tres" id="6_mkf1e"]
 [ext_resource type="Resource" uid="uid://cdssbsowhuab1" path="res://Data/settings_data.tres" id="7_aftys"]
 [ext_resource type="Resource" uid="uid://bcrtvhxgtuy4t" path="res://Arenas/level_4/level_4_data.tres" id="7_aus4r"]
-[ext_resource type="Texture2D" uid="uid://ba0ofy0p3yykp" path="res://icon.svg" id="8_f0ed8"]
 [ext_resource type="PackedScene" uid="uid://nftf0ks741kg" path="res://UI/panel_icon_label.tscn" id="8_kcrgv"]
 [ext_resource type="Script" path="res://Singletons/hud.gd" id="8_mx27g"]
 [ext_resource type="Resource" uid="uid://bsa7h41u42vxc" path="res://Data/score_data.tres" id="8_pedsl"]
@@ -22,7 +25,9 @@
 [ext_resource type="AudioStream" uid="uid://dlm512wr7ni3m" path="res://sounds/ambience/ambience_1.ogg" id="18_qujhh"]
 [ext_resource type="Shader" path="res://materials/_shaders/glitch.gdshader" id="18_w3npk"]
 [ext_resource type="AudioStream" uid="uid://ciefgmqwl0wtn" path="res://sounds/ambience/ambience_drone_0.ogg" id="19_8ur0s"]
+[ext_resource type="Texture2D" uid="uid://c4hs444782f3g" path="res://UI/time_lvl.svg" id="19_yfqxg"]
 [ext_resource type="AudioStream" uid="uid://ci48ae543k26v" path="res://sounds/ambience/ambience_metallic_stretched_0.ogg" id="20_6k0tx"]
+[ext_resource type="Texture2D" uid="uid://u1k0uj6nlg31" path="res://UI/time.svg" id="20_adsxr"]
 [ext_resource type="AudioStream" uid="uid://6n8l8rypao1b" path="res://sounds/ambience/ambience_texture_0.ogg" id="21_65k5g"]
 [ext_resource type="AudioStream" uid="uid://bkfdx6nlb8xvd" path="res://sounds/ambience/ambience_texture_1.ogg" id="22_3rjds"]
 
@@ -95,12 +100,12 @@ _data = {
 
 [node name="Global" type="Node"]
 script = ExtResource("1_hifrn")
+arena_scenes = Array[PackedScene]([ExtResource("3_4p6e3"), ExtResource("4_si5n6"), ExtResource("5_qfp3i"), ExtResource("6_j4ud1")])
 arenas = Array[ExtResource("2_d3kab")]([ExtResource("3_1bx6c"), ExtResource("4_l654u"), ExtResource("5_jx7rb"), ExtResource("6_mkf1e"), ExtResource("7_aus4r")])
 settings = ExtResource("7_aftys")
 score_data = ExtResource("8_pedsl")
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PauseScreen" parent="UI" instance=ExtResource("11_usd3o")]
 
@@ -155,7 +160,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 label_text = "00 : 00 : 00"
-icon_texture = ExtResource("8_f0ed8")
+icon_texture = ExtResource("19_yfqxg")
 icon_modulate = Color(0, 0, 0, 1)
 
 [node name="PanelTimeGame" parent="HUD/AspectRatioContainer/MarginContainer/PanelContainer/HBoxContainer" instance=ExtResource("8_kcrgv")]
@@ -163,7 +168,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 label_text = "00 : 00 : 00"
-icon_texture = ExtResource("8_f0ed8")
+icon_texture = ExtResource("20_adsxr")
 icon_modulate = Color(0, 0, 0, 1)
 
 [node name="PanelScore" parent="HUD/AspectRatioContainer/MarginContainer" instance=ExtResource("8_kcrgv")]
@@ -234,6 +239,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
