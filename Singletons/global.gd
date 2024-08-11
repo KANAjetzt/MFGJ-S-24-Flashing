@@ -120,6 +120,7 @@ func _on_camera_tween_completed() -> void:
 
 
 func reset_game() -> void:
+	score = 0
 	level_completed_count = 0
 	
 	for arena in arenas:

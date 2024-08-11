@@ -39,9 +39,9 @@ func _ready() -> void:
 		hide()
 
 
-func add_time(time: int) -> void:
+func add_time(time: int, score: int) -> void:
 	var new_label := Label3D.new()
-	new_label.text = Global.hud.format_stopwatch(time)
+	new_label.text = "%s | %s" % [Global.hud.format_stopwatch(time), score]
 	new_label.translate(Vector3(0, 0.25 * times.get_child_count(), 0))
 	times.add_child(new_label)
 
@@ -76,4 +76,4 @@ func _on_hit_detector_body_entered(body: Node3D) -> void:
 
 func _on_level_completed() -> void:
 	label_level_name.text = "%s %s" % [label_level_name.text, "COMPLETE!"]
-	add_time(destination.level_times[-1])
+	add_time(destination.level_times[-1], destination.level_score)

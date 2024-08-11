@@ -28,7 +28,6 @@ signal level_completed
 			has_been_completed = true
 			handle_unlocks()
 			level_times.push_back(level_current_time)
-			level_completed.emit()
 			print("LevelData: Level Completed!")
 			Global.audio_manager.play_global_sfx(level_complete_sfx, 18.0, 0.3)
 			Global.activate_gltich()
@@ -47,7 +46,8 @@ signal level_completed
 				Global.hud.score_display.add_to_stack(score_flashes_used, "%s flash devices used" % flashes_used, score_flashes_bonus, "only one flash used!")
 			else:
 				Global.hud.score_display.add_to_stack(score_flashes_used, "%s flash devices used" % flashes_used)
-
+			
+			level_completed.emit()
 
 ## True if the level has been completed in the past TODO: Add save system ?!
 @export var has_been_completed := false

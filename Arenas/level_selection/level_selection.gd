@@ -29,6 +29,7 @@ func _on_game_won(first: bool) -> void:
 	if first and not Global.settings.gameplay_ui_show_overall_timer:
 		Global.settings.gameplay_ui_show_overall_timer = true
 	
+	game_times.get_child(-1).text = "%s | %s" % [game_times.get_child(-1).text, Global.score]
 	add_time(Global.time_game)
 
 
