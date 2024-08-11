@@ -27,6 +27,7 @@ signal level_completed
 		if is_completed:
 			has_been_completed = true
 			handle_unlocks()
+			level_times.push_back(level_current_time)
 			level_completed.emit()
 			print("LevelData: Level Completed!")
 			Global.audio_manager.play_global_sfx(level_complete_sfx, 18.0, 0.3)
@@ -106,6 +107,7 @@ var level_current_time: int = 0 :
 		
 ## Best time on this level
 var level_time_best: int = INF
+var level_times: Array[int]
 
 ## Combined score of the level
 var level_score: int = 0 :

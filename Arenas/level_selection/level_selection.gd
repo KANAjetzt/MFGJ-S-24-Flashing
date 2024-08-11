@@ -1,6 +1,9 @@
 extends LevelBase
 
 
+@onready var game_times: Node3D = %GameTimes
+
+
 func _ready() -> void:
 	super()
 	Global.current_arena_index = level_data.level_id
@@ -25,6 +28,20 @@ func _on_game_won(first: bool) -> void:
 		Global.settings.gameplay_ui_show_level_timer = true
 	if first and not Global.settings.gameplay_ui_show_overall_timer:
 		Global.settings.gameplay_ui_show_overall_timer = true
+	
+	add_time(Global.time_game)
+
+
+func add_time(time: int) -> void:
+	var new_label := Label3D.new()
+	new_label.text = Global.hud.format_stopwatch(time)
+	new_label.font_size = 900
+	new_label.translate(Vector3(0, 4 * game_times.get_child_count(), -(4 * game_times.get_child_count())))
+	game_times.add_child(new_label)
+
+
+func update_time(time: int) -> void:
+	game_times.get_child(-1).text = Global.hud.format_stopwatch(time)
 
 
 func activate_camera() -> void:

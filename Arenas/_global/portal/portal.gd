@@ -26,6 +26,7 @@ signal hit_detected(destination: LevelData)
 @onready var sfx_porting: AudioStreamPlayer3D = %SFXPorting
 @onready var gpu_particles_3d: GPUParticles3D = %GPUParticles3D
 @onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
+@onready var times: Node3D = %Times
 
 
 func _ready() -> void:
@@ -36,6 +37,13 @@ func _ready() -> void:
 		gpu_particles_3d.emitting = false
 		collision_shape_3d.disabled = true
 		hide()
+
+
+func add_time(time: int) -> void:
+	var new_label := Label3D.new()
+	new_label.text = Global.hud.format_stopwatch(time)
+	new_label.translate(Vector3(0, 0.25 * times.get_child_count(), 0))
+	times.add_child(new_label)
 
 
 func _on_hit_detector_body_entered(body: Node3D) -> void:
@@ -68,3 +76,4 @@ func _on_hit_detector_body_entered(body: Node3D) -> void:
 
 func _on_level_completed() -> void:
 	label_level_name.text = "%s %s" % [label_level_name.text, "COMPLETE!"]
+	add_time(destination.level_times[-1])

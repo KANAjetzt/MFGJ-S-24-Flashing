@@ -66,6 +66,8 @@ var time_game: int :
 	set(new_value):
 		time_game = new_value
 		hud.panel_time_game.label_text = hud.format_stopwatch(new_value)
+		arenas[0].ref.update_time(time_game)
+var time_games: Array[int] = []
 var score: int : 
 	set(new_value):
 		score = new_value
@@ -74,6 +76,7 @@ var level_completed_count := 0 :
 	set(new_value):
 		level_completed_count = new_value
 		if level_completed_count == arenas.size() - 1:
+			time_games.push_back(time_game)
 			game_won.emit(not is_game_won)
 			is_game_won = true
 var is_game_won := false
