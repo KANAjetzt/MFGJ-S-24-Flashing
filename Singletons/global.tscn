@@ -105,10 +105,6 @@ arenas = Array[ExtResource("2_d3kab")]([ExtResource("3_1bx6c"), ExtResource("4_l
 settings = ExtResource("7_aftys")
 score_data = ExtResource("8_pedsl")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="PauseScreen" parent="UI" instance=ExtResource("11_usd3o")]
-
 [node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_mx27g")
@@ -219,6 +215,10 @@ offset_left = 1.0
 offset_top = -348.0
 offset_right = 1207.0
 color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" parent="UI" instance=ExtResource("11_usd3o")]
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 
