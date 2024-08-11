@@ -4,12 +4,12 @@
 
 [resource]
 script = ExtResource("1_h761u")
-gameplay_crosshair_color = Color(0.847989, 0.133457, 0.590986, 1)
+gameplay_crosshair_color = Color(1, 1, 1, 1)
 gameplay_ui_show_overall_timer = false
 gameplay_ui_show_level_timer = false
 sound_main = 0.5
-sound_music = 0.2
-sound_sfx = 0.5
+sound_music = 0.5
+sound_sfx = 0.3
 video_is_fps_limit_active = true
 video_fps_limit = 350
 video_is_full_screen = false

@@ -42,7 +42,12 @@ signal level_completed
 			
 			score_time_calc()
 			
-			level_score += score_flashes_used
+			add_to_score(score_flashes_used + score_flashes_bonus)
+			if score_flashes_bonus:
+				Global.hud.score_display.add_to_stack(score_flashes_used, "%s flash devices used" % flashes_used, score_flashes_bonus, "only one flash used!")
+			else:
+				Global.hud.score_display.add_to_stack(score_flashes_used, "%s flash devices used" % flashes_used)
+
 
 ## True if the level has been completed in the past TODO: Add save system ?!
 @export var has_been_completed := false
@@ -113,7 +118,6 @@ var level_times: Array[int]
 var level_score: int = 0 :
 	set(new_value):
 		level_score = new_value
-		Global.score += level_score
 		if level_score > level_score_best:
 			level_score_best = level_score
 ## Best combined score of this level
@@ -150,13 +154,14 @@ func handle_unlocks() -> void:
 func score_add_enemy(enemy_count: int) -> void:
 	if enemy_count > 1:
 		var current_bonus = (enemy_count - 1) * Global.score_data.enemies_bonus
-		score_enemy += current_bonus
+		score_enemy += Global.score_data.enemies * enemy_count
 		score_enemy_bonus += current_bonus
-		level_score += current_bonus
-		Global.hud.score_display.add_to_stack(Global.score_data.enemies, "%s enemies flashed" % enemy_count, current_bonus, "at once")
+		add_to_score(Global.score_data.enemies * enemy_count)
+		add_to_score(current_bonus)
+		Global.hud.score_display.add_to_stack(Global.score_data.enemies * enemy_count, "%s enemies flashed" % enemy_count, current_bonus, "at once")
 	else:
 		score_enemy += Global.score_data.enemies
-		level_score += Global.score_data.enemies
+		add_to_score(Global.score_data.enemies)
 		Global.hud.score_display.add_to_stack(Global.score_data.enemies, "one enemy flashed")
 
 
@@ -164,11 +169,17 @@ func score_time_calc() -> void:
 	if level_current_time < level_time * 1000:
 		score_time_bonus = Global.score_data.time_bonus * (level_time - level_current_time / 1000)
 		score_time = Global.score_data.time + score_time_bonus
+		Global.hud.score_display.add_to_stack(score_time - score_time_bonus, "beat level time %s" % Global.hud.format_stopwatch(level_current_time), score_time_bonus, "by %s" % Global.hud.format_stopwatch((level_time - level_current_time / 1000)))
 	else:
 		score_time_reduction = Global.score_data.time_reduction * (level_current_time / 1000 - level_time)
 		score_time = max(0, Global.score_data.time - score_time_reduction)
-	
-	level_score += score_time
+
+	add_to_score(score_time)
+
+
+func add_to_score(value: int) -> void:
+	Global.score += value
+	level_score += value
 
 
 func score_get_all() -> int:

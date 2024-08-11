@@ -58,8 +58,9 @@ var time_level_start: int
 var time_level: int :
 	set(new_value) :
 		time_level = new_value
-		hud.panel_time_level.label_text = hud.format_stopwatch(new_value)
-		current_arena.level_current_time = new_value
+		if not current_arena.is_completed:
+			hud.panel_time_level.label_text = hud.format_stopwatch(new_value)
+			current_arena.level_current_time = new_value
 var time_engine: int
 var time_game_start: int
 var time_game: int :

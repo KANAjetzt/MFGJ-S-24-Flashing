@@ -7,6 +7,7 @@ func _ready() -> void:
 
 
 func add_to_stack(score:int, score_text: String, score_bonus: int = 0, score_bonus_text: String = "") -> void:
+	print("%s " % score_text,  "%s " % score,"%s " % score_bonus,"%s " % (score + score_bonus))
 	var h_box := HBoxContainer.new()
 	h_box.alignment = BoxContainer.ALIGNMENT_CENTER
 	var label_score := Label.new()
