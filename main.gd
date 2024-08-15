@@ -52,6 +52,7 @@ func remove_levels() -> void:
 func _on_player_throw_before(flash: Flash, origin: Vector3, force: Vector3) -> void:
 	flash.flashed.connect(_on_flash_flashed)
 	flash.start_detonation_timer()
+	Global.current_arena.flashes_used += 1
 
 
 func _on_player_throw(flash: Flash, origin: Vector3, force: Vector3) -> void:
@@ -74,5 +75,3 @@ func _on_flash_flashed(flash: Flash, flashed_bodies: Array[Flashable]) -> void:
 	
 	if flashed_bodies_count > 0:
 		Global.current_arena.score_add_enemy(flashed_bodies_count)
-	
-	Global.current_arena.flashes_used += 1

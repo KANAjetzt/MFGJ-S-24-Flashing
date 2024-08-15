@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://0mq16107sc86"]
+
+[ext_resource type="AudioStream" uid="uid://bct2f5u0fhcqa" path="res://sounds/SFX/finish_0.ogg" id="1_mrjx8"]
+[ext_resource type="Script" path="res://Arenas/_global/level_data.gd" id="2_jk4dy"]
+
+[resource]
+script = ExtResource("2_jk4dy")
+is_active = false
+level_id = 5
+level_name = "level_5"
+is_locked = false
+is_completed = false
+has_been_completed = false
+unlocks = Array[ExtResource("2_jk4dy")]([])
+flash_limit = 5
+flash_limit_active = true
+level_time = 30
+level_complete_sfx = ExtResource("1_mrjx8")

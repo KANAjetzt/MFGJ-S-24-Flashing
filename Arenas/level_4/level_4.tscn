@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6n773h2cp8y2"]
+[gd_scene load_steps=8 format=3 uid="uid://b6n773h2cp8y2"]
 
 [ext_resource type="PackedScene" uid="uid://dmm55p3lirpfe" path="res://Arenas/_level_base/level_base.tscn" id="1_v5t63"]
 [ext_resource type="Resource" uid="uid://bcrtvhxgtuy4t" path="res://Arenas/level_4/level_4_data.tres" id="2_mht1n"]
 [ext_resource type="PackedScene" uid="uid://dn2rhl8bn6idp" path="res://Arenas/_global/wall/wall.tscn" id="2_qkyud"]
 [ext_resource type="PackedScene" uid="uid://cepu2lxamrwfc" path="res://Arenas/_global/player_area/wall_player_area.tscn" id="3_f5qbc"]
 [ext_resource type="PackedScene" uid="uid://bcmun1x0uu6lq" path="res://Flashable/Enemy/Enemy.tscn" id="3_knfpo"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_i7vq2"]
+
+[sub_resource type="Resource" id="Resource_21dxm"]
+script = ExtResource("6_i7vq2")
+duration = 3.0
+transition = 4
+ease = 2
 
 [node name="Level4" instance=ExtResource("1_v5t63")]
 level_data = ExtResource("2_mht1n")
@@ -63,7 +70,8 @@ wall_width = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.10091)
 
 [node name="CameraStart" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6101, 24.7976, -6.08261)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6101, 24.7976, 12.9116)
 
 [node name="CameraEnd" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.3441, 0)
+transform = Transform3D(1, 0, 0, 0, 0.566665, 0.823948, 0, -0.823948, 0.566665, 0, 9.97259, 6.12002)
+tween_resource = SubResource("Resource_21dxm")

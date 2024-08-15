@@ -40,3 +40,9 @@ func _on_flash_radius_body_entered(body: Node3D) -> void:
 		bodies_in_range.push_back(body)
 		print("peng!")
 		print(bodies_in_range.size())
+
+
+func _on_body_entered(body: Node) -> void:
+	if body is Enemy:
+		var hit_enemy: Enemy = body
+		hit_enemy.flash()

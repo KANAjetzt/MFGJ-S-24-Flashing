@@ -16,9 +16,13 @@ func check_sight(target_position: Vector3) -> bool:
 	if ray_cast.is_colliding():
 		print("WALL!")
 	else:
-		print("MY EYES X_X")
-		flashed.emit(not is_flashed)
-		is_flashed = true
+		flash()
 	ray_cast.enabled = false
 	
 	return is_flashed
+
+
+func flash() -> void:
+	print("MY EYES X_X")
+	flashed.emit(not is_flashed)
+	is_flashed = true
